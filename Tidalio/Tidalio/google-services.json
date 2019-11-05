@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "985581754028",
+    "firebase_url": "https://tidalioauth-8377f.firebaseio.com",
+    "project_id": "tidalioauth-8377f",
+    "storage_bucket": "tidalioauth-8377f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985581754028:android:95b71532953e2cf8fff109",
+        "android_client_info": {
+          "package_name": "com.armandasalmd.Tidalio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985581754028-0jef2cm4j4tq4g8c7a8e6mmdd1adbss6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.armandasalmd.Tidalio",
+            "certificate_hash": "ab60a1c5272548617f2a930fa4b020da752eefaa"
+          }
+        },
+        {
+          "client_id": "985581754028-bbkfubdd07qeheei36npqsispnj7l9b2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlASiFw6wz0lvAjhwMzsfH_rWAu5ycIAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "985581754028-bbkfubdd07qeheei36npqsispnj7l9b2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
