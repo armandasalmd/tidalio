@@ -17,7 +17,7 @@ using static Android.Views.View;
 
 namespace Tidalio
 {
-    [Activity(Label = "SignUp", Theme ="@style/AppTheme")]
+    [Activity(Label = "Sign Up", Theme ="@style/AppTheme")]
     public class SignUp : AppCompatActivity, IOnClickListener, IOnCompleteListener
     {
 
@@ -34,7 +34,7 @@ namespace Tidalio
             // Create your application here
 
             //InitFirebase
-            auth = FirebaseAuth.GetInstance(MainActivity.app);
+            auth = AuthHelper.GetInstance(this).GetAuth();
             
             //View
             btnSignup = FindViewById<Button>(Resource.Id.signup_btn_register);
@@ -68,22 +68,21 @@ namespace Tidalio
 
         private void SignUpUser(string email, string password)
         {
-            auth.CreateUserWithEmailAndPassword(email, password)
-                .AddOnCompleteListener(this, this);
+            auth.CreateUserWithEmailAndPassword(email, password).AddOnCompleteListener(this, this);
         }
 
         public void OnComplete(Task task)
         {
-            if (task.IsSuccessful == true)
-            {
-                Snackbar snackBar = Snackbar.Make(activity_sign_up, "Register successfully", Snackbar.LengthShort);
-                snackBar.Show();
-            }
+            if (task.IsSuccessful)
+                DoSnackbar("Register successfully");
             else
-            {
-                Snackbar snackBar = Snackbar.Make(activity_sign_up, "Register Failed ", Snackbar.LengthShort);
-                snackBar.Show();
-            }
+                DoSnackbar("Register Failed");
+        }
+
+        public void DoSnackbar(string message)
+        {
+            Snackbar snackBar = Snackbar.Make(activity_sign_up, message, Snackbar.LengthShort);
+            snackBar.Show();
         }
     }
 }

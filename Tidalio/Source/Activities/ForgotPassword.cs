@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Gms.Tasks;
 using Android.OS;
-using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
@@ -17,7 +11,7 @@ using static Android.Views.View;
 
 namespace Tidalio
 {
-    [Activity(Label = "ForgotPassword", Theme ="@style/AppTheme")]
+    [Activity(Label = "Forgot Password", Theme ="@style/AppTheme")]
     public class ForgotPassword : AppCompatActivity, IOnClickListener, IOnCompleteListener
     {
         private EditText input_email;
@@ -31,7 +25,7 @@ namespace Tidalio
             SetContentView(Resource.Layout.ForgotPassword);
 
             //Init Firebase
-            auth = FirebaseAuth.GetInstance(MainActivity.app);
+            auth = AuthHelper.GetInstance(this).GetAuth();
 
             //View
             input_email = FindViewById<EditText>(Resource.Id.forgot_email);
@@ -53,7 +47,10 @@ namespace Tidalio
             }
             else if (v.Id == Resource.Id.forgot_btn_reset)
             {
-                ResetPassword(input_email.Text);
+                if (input_email.Text == null || input_email.Text == "" || !input_email.Text.Contains("@"))
+                    DoSnackbar("Please enter valid email address");
+                else
+                    ResetPassword(input_email.Text);
             }
         }
         private void ResetPassword(string email)
@@ -74,6 +71,12 @@ namespace Tidalio
                 Snackbar snackBar = Snackbar.Make(activity_forgot, "Reset password link sent to email : " + input_email.Text, Snackbar.LengthShort);
                 snackBar.Show();
             }
+        }
+
+        public void DoSnackbar(string message)
+        {
+            Snackbar snackBar = Snackbar.Make(activity_forgot, message, Snackbar.LengthShort);
+            snackBar.Show();
         }
     }
 }

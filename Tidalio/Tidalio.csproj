@@ -65,7 +65,9 @@
     <Compile Include="Source\Activities\Dashboard.cs" />
     <Compile Include="Source\Activities\ForgotPassword.cs" />
     <Compile Include="Source\Activities\SignUp.cs" />
+    <Compile Include="Source\Helpers\Auth.cs" />
     <Compile Include="Source\Helpers\Functions.cs" />
+    <Compile Include="Source\Models\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="google-services.json" />
@@ -74,7 +76,7 @@
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_main.axml">
+    <AndroidResource Include="Resources\layout\dashboard_main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\app_bar_main.axml">
@@ -141,7 +143,6 @@
   <ItemGroup>
     <Folder Include="Source\Adapters\" />
     <Folder Include="Source\Fragments\" />
-    <Folder Include="Source\Models\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Dashboard.axml">
@@ -155,6 +156,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\SignUp.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\SignIn.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
