@@ -36,6 +36,9 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -64,10 +67,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\Activities\Dashboard.cs" />
     <Compile Include="Source\Activities\ForgotPassword.cs" />
+    <Compile Include="Source\Activities\Settings.cs" />
     <Compile Include="Source\Activities\SignUp.cs" />
+    <Compile Include="Source\Adapters\SavedLocationsAdapter.cs" />
+    <Compile Include="Source\Fragments\Forecast.cs" />
+    <Compile Include="Source\Fragments\SavedForecasts.cs" />
+    <Compile Include="Source\Fragments\SavedLocations.cs" />
     <Compile Include="Source\Helpers\Auth.cs" />
+    <Compile Include="Source\Helpers\DarkSkyApi.cs" />
     <Compile Include="Source\Helpers\Functions.cs" />
-    <Compile Include="Source\Models\Constants.cs" />
+    <Compile Include="Source\Helpers\TidalApi.cs" />
+    <Compile Include="Source\Models\Location.cs" />
+    <Compile Include="Source\Helpers\Constants.cs" />
+    <Compile Include="Source\Models\TidalStation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="google-services.json" />
@@ -123,6 +135,12 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="System.Net.Http">
+      <Version>4.3.4</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.1" />
@@ -140,15 +158,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Source\Adapters\" />
-    <Folder Include="Source\Fragments\" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\Dashboard.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ForgotPassword.axml">
       <SubType>Designer</SubType>
@@ -161,6 +171,46 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\SignIn.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\forecast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\saved_forecast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\saved_location.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Settings.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\fragmentForecast.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\fragmentSavedLocations.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\fragmentSavedForecasts.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\savedLocationRow.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

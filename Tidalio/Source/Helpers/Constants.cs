@@ -22,6 +22,11 @@ namespace Tidalio
         public const string AuthStorageBucket = "tidalioauth-8377f.appspot.com";
         public const string Sha1Signature = "AB:60:A1:C5:27:25:48:61:7F:2A:93:0F:A4:B0:20:DA:75:2E:EF:AA";
 
+        // Autocomplete component tutorial: https://www.youtube.com/watch?v=JB3ETK5mh3c
+        public const string DarkSkyKey = "240bb2915e752c9dcf6e0cc03eb58b95";
+        public const string TidalKey   = "ddf7e05ca7fb49cb930cf28e9291504f";
 
+        public const string DarkSkyDomain = "https://api.darksky.net";
+        public const string TidalDomain   = "https://admiraltyapi.azure-api.net";
     }
 }

@@ -35,6 +35,7 @@ namespace Tidalio
             btnForgotPassword = FindViewById<TextView>(Resource.Id.login_btn_forgot_password);
             activity_main = FindViewById<RelativeLayout>(Resource.Id.activity_main);
 
+
             btnSignUp.SetOnClickListener(this);
             btnLogin.SetOnClickListener(this);
             btnForgotPassword.SetOnClickListener(this);
@@ -59,7 +60,7 @@ namespace Tidalio
         }
         private void LoginUser(string email, string password)
         {
-            email = "armandas.bark@gmail.com"; // TODO: remove in production
+            email = "test@test.com"; // TODO: remove in production
             password = "test123"; // TODO: remove in production
             if (email == null || email == "")
                 DoSnackbar("Please enter the email");

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
-namespace Tidalio.Source.Helpers
+namespace Tidalio
 {
     public static class Functions
     {
@@ -31,5 +31,48 @@ namespace Tidalio.Source.Helpers
             }
             return "not found";
         }
+
+        public static string CalculateAddress(double _latitude, double _longitude)
+        {
+            var address = "";
+            try
+            {
+                var placemarks = Task.Run(() => Geocoding.GetPlacemarksAsync(_latitude, _longitude)).Result;
+
+                var placemark = placemarks?.FirstOrDefault();
+                if (placemark != null)
+                {
+                    if (placemark.CountryCode != null)
+                        address = $"{placemark.Thoroughfare},{placemark.PostalCode},{placemark.CountryName}";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return address;
+        }
+
+        public static double[] CalculateCoordinates(string addr)
+        {
+            double[] coords = new double[2];
+            try
+            {
+                var locations = Task.Run(() => Geocoding.GetLocationsAsync(addr)).Result;
+                var location = locations?.FirstOrDefault();
+                if (location != null)
+                {
+                    coords[0] = location.Longitude;
+                    coords[1] = location.Latitude;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return coords;
+        }
+
     }
 }

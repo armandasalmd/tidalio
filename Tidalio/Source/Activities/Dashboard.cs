@@ -16,12 +16,10 @@ using static Android.Views.View;
 namespace Tidalio
 {
     [Activity(Label = "Dashboard", Theme = "@style/AppTheme.NoActionBar")]
-    public class Dashboard : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener, IOnClickListener, IOnCompleteListener
+    public class Dashboard : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         TextView txtWelcome;
-        EditText input_new_password;
-        Button btnChangePass, btnLogout;
-        RelativeLayout activity_dashboard;
+        LinearLayout activity_dashboard;
 
         FirebaseAuth auth;
 
@@ -44,22 +42,23 @@ namespace Tidalio
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
 
-            //Init Firebase
+            View headerView = navigationView.GetHeaderView(0);
+            
+            //TextView navUsername = (TextView)headerView.findViewById<>();
             auth = AuthHelper.GetInstance(this).GetAuth();
+            headerView.FindViewById<TextView>(Resource.Id.nav_user_email).SetText(auth.CurrentUser.DisplayName, TextView.BufferType.Normal);
+            //navUsername.setText("Your Text Here");
+
+            //Init Firebase
 
             //View
-            txtWelcome = FindViewById<TextView>(Resource.Id.dashboard_welcome);
-            input_new_password = FindViewById<EditText>(Resource.Id.dashboard_newpassword);
-            btnChangePass = FindViewById<Button>(Resource.Id.dashboard_btn_change_pass);
-            btnLogout = FindViewById<Button>(Resource.Id.dashboard_btn_logout);
-            activity_dashboard = FindViewById<RelativeLayout>(Resource.Id.activity_dashboard);
-
-            btnChangePass.SetOnClickListener(this);
-            btnLogout.SetOnClickListener(this);
+            //txtWelcome = FindViewById<TextView>(Resource.Id.dashboard_welcome);
+            activity_dashboard = FindViewById<LinearLayout>(Resource.Id.activity_dashboard);
 
             //Check session
-            if (auth.CurrentUser != null)
-                txtWelcome.Text = "Welcome , " + auth.CurrentUser.Email;
+            //if (auth.CurrentUser != null)
+            //    txtWelcome.Text = "Welcome , " + auth.CurrentUser.Email;
+            ShowFragment(new Forecast());
         }
 
         public override void OnBackPressed()
@@ -94,45 +93,53 @@ namespace Tidalio
         }
 
         private void FabOnClick(object sender, EventArgs eventArgs)
-        {
-            View view = (View)sender;
+        { 
             string display = "string"; //await Functions.GetCoords();
 
             DoSnackbar(display);
         }
 
+        [Obsolete]
         public bool OnNavigationItemSelected(IMenuItem item)
         {
             int id = item.ItemId;
+            Fragment fragment = null;
 
-            if (id == Resource.Id.nav_camera)
+            if (id == Resource.Id.nav_forecast)
             {
-                // Handle the camera action
+                fragment = new Forecast();
             }
-            else if (id == Resource.Id.nav_gallery)
+            else if (id == Resource.Id.nav_saved_locations)
             {
-
+                fragment = new SavedLocations();
             }
-            else if (id == Resource.Id.nav_slideshow)
+            else if (id == Resource.Id.nav_saved_forecasts)
             {
-
+                fragment = new SavedForecasts();
             }
-            else if (id == Resource.Id.nav_manage)
+            else if (id == Resource.Id.nav_settings)
             {
-
+                StartActivity(new Android.Content.Intent(this, typeof(Settings)));
             }
-            else if (id == Resource.Id.nav_share)
+            else if (id == Resource.Id.nav_logout)
             {
-
+                LogoutUser();
             }
-            else if (id == Resource.Id.nav_send)
-            {
-
-            }
-
+            
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             drawer.CloseDrawer(GravityCompat.Start);
+
+            if (fragment != null)
+                ShowFragment(fragment);
             return true;
+        }
+
+        [Obsolete]
+        private void ShowFragment(Fragment fragment)
+        {
+            FragmentTransaction ft = FragmentManager.BeginTransaction();
+            ft.Replace(Resource.Id.fragment_container, fragment);
+            ft.Commit();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -142,13 +149,6 @@ namespace Tidalio
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        public void OnClick(View v)
-        {
-            if (v.Id == Resource.Id.dashboard_btn_change_pass)
-                ChangePassword(input_new_password.Text);
-            else if (v.Id == Resource.Id.dashboard_btn_logout)
-                LogoutUser();
-        }
 
         private void LogoutUser()
         {
@@ -160,20 +160,6 @@ namespace Tidalio
             }
         }
 
-        private void ChangePassword(string newPassword)
-        {
-            FirebaseUser user = auth.CurrentUser;
-            user.UpdatePassword(newPassword)
-                .AddOnCompleteListener(this);
-        }
-
-        public void OnComplete(Task task)
-        {
-            if (task.IsSuccessful == true)
-            {
-                DoSnackbar("Password has been changed");
-            }
-        }
 
         public void DoSnackbar(string message)
         {

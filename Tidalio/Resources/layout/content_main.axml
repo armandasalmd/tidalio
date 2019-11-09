@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_dashboard"
     android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
+    <!--<ImageView
         android:id="@+id/icon"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -19,35 +19,10 @@
         android:textColor="@color/colorPrimaryDark"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <android.support.design.widget.TextInputLayout
-        android:layout_below="@+id/dashboard_welcome"
-        android:id="@+id/dashboard_input_newpassword"
+        android:layout_height="wrap_content" />-->
+    <RelativeLayout
+        android:id="@+id/fragment_container"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/dashboard_newpassword"
-            android:hint="Enter new password"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </android.support.design.widget.TextInputLayout>
-    <Button
-        android:layout_below="@+id/dashboard_input_newpassword"
-        android:id="@+id/dashboard_btn_change_pass"
-        android:text="Change Password"
-        android:background="#263238"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-      android:layout_marginTop="20dp"
-        android:layout_below="@+id/dashboard_btn_change_pass"
-        android:id="@+id/dashboard_btn_logout"
-        android:text="Logout"
-        android:background="#263238"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+        android:layout_height="match_parent"/>
+</LinearLayout>
