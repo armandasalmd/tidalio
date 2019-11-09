@@ -20,6 +20,11 @@ namespace Tidalio
     {
         TextView txtWelcome;
         LinearLayout activity_dashboard;
+        FloatingActionButton fab;
+        Fragment active_fragment;
+
+        int active_fragment_id = Resource.Id.nav_forecast;
+
 
         FirebaseAuth auth;
 
@@ -31,7 +36,7 @@ namespace Tidalio
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
-            FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.Click += FabOnClick;
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
@@ -58,7 +63,8 @@ namespace Tidalio
             //Check session
             //if (auth.CurrentUser != null)
             //    txtWelcome.Text = "Welcome , " + auth.CurrentUser.Email;
-            ShowFragment(new Forecast());
+            active_fragment = new Forecast();
+            ShowFragment(active_fragment);
         }
 
         public override void OnBackPressed()
@@ -92,30 +98,39 @@ namespace Tidalio
             return base.OnOptionsItemSelected(item);
         }
 
+        [Obsolete]
         private void FabOnClick(object sender, EventArgs eventArgs)
         { 
-            string display = "string"; //await Functions.GetCoords();
-
-            DoSnackbar(display);
+            //string display = "string"; //await Functions.GetCoords();
+            //DoSnackbar(display);
+            if (active_fragment_id == Resource.Id.nav_forecast)
+            {
+                (active_fragment as Forecast).OnSearch();
+            }
         }
 
         [Obsolete]
         public bool OnNavigationItemSelected(IMenuItem item)
         {
             int id = item.ItemId;
-            Fragment fragment = null;
 
             if (id == Resource.Id.nav_forecast)
             {
-                fragment = new Forecast();
+                active_fragment = new Forecast();
+                active_fragment_id = Resource.Id.nav_forecast;
+                fab.Visibility = ViewStates.Visible;
             }
             else if (id == Resource.Id.nav_saved_locations)
             {
-                fragment = new SavedLocations();
+                active_fragment = new SavedLocations();
+                active_fragment_id = Resource.Id.nav_saved_locations;
+                fab.Visibility = ViewStates.Invisible;
             }
             else if (id == Resource.Id.nav_saved_forecasts)
             {
-                fragment = new SavedForecasts();
+                active_fragment = new SavedForecasts();
+                active_fragment_id = Resource.Id.nav_saved_forecasts;
+                fab.Visibility = ViewStates.Invisible;
             }
             else if (id == Resource.Id.nav_settings)
             {
@@ -129,8 +144,8 @@ namespace Tidalio
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             drawer.CloseDrawer(GravityCompat.Start);
 
-            if (fragment != null)
-                ShowFragment(fragment);
+            if (active_fragment != null)
+                ShowFragment(active_fragment);
             return true;
         }
 

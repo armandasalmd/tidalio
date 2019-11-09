@@ -39,6 +39,8 @@ namespace Tidalio
             btnSignUp.SetOnClickListener(this);
             btnLogin.SetOnClickListener(this);
             btnForgotPassword.SetOnClickListener(this);
+
+            btnLogin.CallOnClick(); // TODO: delete when in production
         }
 
         public void OnClick(View v)

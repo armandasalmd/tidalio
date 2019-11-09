@@ -18,10 +18,14 @@ namespace Tidalio
     {
         private RecyclerView recyclerView;
         private SavedLocationsAdapter adapter;
+        private JavaList<string> mList;
+        private AutoCompleteTextView autoComplete;
+        private Button addLocationBtn;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            mList = getDataList();
             // Create your fragment here
         }
 
@@ -29,7 +33,7 @@ namespace Tidalio
         {
             recyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerView);
 
-            adapter = new SavedLocationsAdapter(getDataList());
+            adapter = new SavedLocationsAdapter(mList);
             recyclerView.HasFixedSize = true;
             recyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
             recyclerView.SetAdapter(adapter);
@@ -55,7 +59,22 @@ namespace Tidalio
 
             View view = inflater.Inflate(Resource.Layout.fragmentSavedLocations, container, false);
             InitRecycler(view);
+            autoComplete = view.FindViewById<AutoCompleteTextView>(Resource.Id.autoComplete);
+            addLocationBtn = view.FindViewById<Button>(Resource.Id.addNewLocationBtn);
+            addLocationBtn.Click += AddLocationBtn_Click;
+
             return view;
+        }
+
+        private void AddLocationBtn_Click(object sender, EventArgs e)
+        {
+            string dataToAdd = autoComplete.Text;
+            if (dataToAdd != string.Empty && dataToAdd != null)
+            {
+                adapter.AddRow(dataToAdd);
+                autoComplete.Text = string.Empty;
+            }
+            //adapter.AddRow()
         }
     }
 }

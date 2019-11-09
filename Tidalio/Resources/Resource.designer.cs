@@ -3204,206 +3204,239 @@ namespace Tidalio
 			// aapt resource value: 0x7f020054
 			public const int avd_hide_password = 2130837588;
 			
-			// aapt resource value: 0x7f020092
-			public const int avd_hide_password_1 = 2130837650;
+			// aapt resource value: 0x7f02009d
+			public const int avd_hide_password_1 = 2130837661;
 			
-			// aapt resource value: 0x7f020093
-			public const int avd_hide_password_2 = 2130837651;
+			// aapt resource value: 0x7f02009e
+			public const int avd_hide_password_2 = 2130837662;
 			
-			// aapt resource value: 0x7f020094
-			public const int avd_hide_password_3 = 2130837652;
+			// aapt resource value: 0x7f02009f
+			public const int avd_hide_password_3 = 2130837663;
 			
 			// aapt resource value: 0x7f020055
 			public const int avd_show_password = 2130837589;
 			
-			// aapt resource value: 0x7f020095
-			public const int avd_show_password_1 = 2130837653;
+			// aapt resource value: 0x7f0200a0
+			public const int avd_show_password_1 = 2130837664;
 			
-			// aapt resource value: 0x7f020096
-			public const int avd_show_password_2 = 2130837654;
+			// aapt resource value: 0x7f0200a1
+			public const int avd_show_password_2 = 2130837665;
 			
-			// aapt resource value: 0x7f020097
-			public const int avd_show_password_3 = 2130837655;
+			// aapt resource value: 0x7f0200a2
+			public const int avd_show_password_3 = 2130837666;
 			
 			// aapt resource value: 0x7f020056
-			public const int common_full_open_on_phone = 2130837590;
+			public const int clear_day = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int common_google_signin_btn_icon_dark = 2130837591;
+			public const int clear_night = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int common_google_signin_btn_icon_dark_focused = 2130837592;
+			public const int cloud = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int common_google_signin_btn_icon_dark_normal = 2130837593;
+			public const int common_full_open_on_phone = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int common_google_signin_btn_icon_dark_normal_background = 2130837594;
+			public const int common_google_signin_btn_icon_dark = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int common_google_signin_btn_icon_disabled = 2130837595;
+			public const int common_google_signin_btn_icon_dark_focused = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int common_google_signin_btn_icon_light = 2130837596;
+			public const int common_google_signin_btn_icon_dark_normal = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int common_google_signin_btn_icon_light_focused = 2130837597;
+			public const int common_google_signin_btn_icon_dark_normal_background = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int common_google_signin_btn_icon_light_normal = 2130837598;
+			public const int common_google_signin_btn_icon_disabled = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int common_google_signin_btn_icon_light_normal_background = 2130837599;
+			public const int common_google_signin_btn_icon_light = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int common_google_signin_btn_text_dark = 2130837600;
+			public const int common_google_signin_btn_icon_light_focused = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int common_google_signin_btn_text_dark_focused = 2130837601;
+			public const int common_google_signin_btn_icon_light_normal = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int common_google_signin_btn_text_dark_normal = 2130837602;
+			public const int common_google_signin_btn_icon_light_normal_background = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int common_google_signin_btn_text_dark_normal_background = 2130837603;
+			public const int common_google_signin_btn_text_dark = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int common_google_signin_btn_text_disabled = 2130837604;
+			public const int common_google_signin_btn_text_dark_focused = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int common_google_signin_btn_text_light = 2130837605;
+			public const int common_google_signin_btn_text_dark_normal = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int common_google_signin_btn_text_light_focused = 2130837606;
+			public const int common_google_signin_btn_text_dark_normal_background = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int common_google_signin_btn_text_light_normal = 2130837607;
+			public const int common_google_signin_btn_text_disabled = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int common_google_signin_btn_text_light_normal_background = 2130837608;
+			public const int common_google_signin_btn_text_light = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int design_bottom_navigation_item_background = 2130837609;
+			public const int common_google_signin_btn_text_light_focused = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int design_fab_background = 2130837610;
+			public const int common_google_signin_btn_text_light_normal = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int design_ic_visibility = 2130837611;
+			public const int common_google_signin_btn_text_light_normal_background = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int design_ic_visibility_off = 2130837612;
+			public const int design_bottom_navigation_item_background = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int design_password_eye = 2130837613;
+			public const int design_fab_background = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int design_snackbar_background = 2130837614;
+			public const int design_ic_visibility = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int forecast = 2130837615;
+			public const int design_ic_visibility_off = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int googleg_disabled_color_18 = 2130837616;
+			public const int design_password_eye = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int googleg_standard_color_18 = 2130837617;
+			public const int design_snackbar_background = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int ic_menu_camera = 2130837618;
+			public const int fog = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int ic_menu_gallery = 2130837619;
+			public const int forecast = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int ic_menu_manage = 2130837620;
+			public const int googleg_disabled_color_18 = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int ic_menu_send = 2130837621;
+			public const int googleg_standard_color_18 = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int ic_menu_share = 2130837622;
+			public const int ic_menu_camera = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int ic_menu_slideshow = 2130837623;
+			public const int ic_menu_gallery = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int ic_mtrl_chip_checked_black = 2130837624;
+			public const int ic_menu_manage = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int ic_mtrl_chip_checked_circle = 2130837625;
+			public const int ic_menu_send = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int ic_mtrl_chip_close_circle = 2130837626;
+			public const int ic_menu_share = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int icon = 2130837627;
+			public const int ic_menu_slideshow = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int logout = 2130837628;
+			public const int ic_mtrl_chip_checked_black = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int mtrl_snackbar_background = 2130837629;
+			public const int ic_mtrl_chip_checked_circle = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int mtrl_tabs_default_indicator = 2130837630;
+			public const int ic_mtrl_chip_close_circle = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int navigation_empty_icon = 2130837631;
+			public const int icon = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int notification_action_background = 2130837632;
+			public const int logout = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int notification_bg = 2130837633;
+			public const int mtrl_snackbar_background = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int notification_bg_low = 2130837634;
+			public const int mtrl_tabs_default_indicator = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int notification_bg_low_normal = 2130837635;
+			public const int navigation_empty_icon = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int notification_bg_low_pressed = 2130837636;
+			public const int notification_action_background = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int notification_bg_normal = 2130837637;
+			public const int notification_bg = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int notification_bg_normal_pressed = 2130837638;
+			public const int notification_bg_low = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int notification_icon_background = 2130837639;
-			
-			// aapt resource value: 0x7f020090
-			public const int notification_template_icon_bg = 2130837648;
-			
-			// aapt resource value: 0x7f020091
-			public const int notification_template_icon_low_bg = 2130837649;
+			public const int notification_bg_low_normal = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int notification_tile_bg = 2130837640;
+			public const int notification_bg_low_pressed = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int notify_panel_notification_icon_bg = 2130837641;
+			public const int notification_bg_normal = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int saved_forecast = 2130837642;
+			public const int notification_bg_normal_pressed = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int saved_location = 2130837643;
+			public const int notification_icon_background = 2130837643;
+			
+			// aapt resource value: 0x7f02009b
+			public const int notification_template_icon_bg = 2130837659;
+			
+			// aapt resource value: 0x7f02009c
+			public const int notification_template_icon_low_bg = 2130837660;
 			
 			// aapt resource value: 0x7f02008c
-			public const int settings = 2130837644;
+			public const int notification_tile_bg = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int side_nav_bar = 2130837645;
+			public const int notify_panel_notification_icon_bg = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int tooltip_frame_dark = 2130837646;
+			public const int partly_cloudy_day = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int tooltip_frame_light = 2130837647;
+			public const int partly_cloudy_night = 2130837647;
+			
+			// aapt resource value: 0x7f020090
+			public const int rain = 2130837648;
+			
+			// aapt resource value: 0x7f020091
+			public const int saved_forecast = 2130837649;
+			
+			// aapt resource value: 0x7f020092
+			public const int saved_location = 2130837650;
+			
+			// aapt resource value: 0x7f020093
+			public const int search = 2130837651;
+			
+			// aapt resource value: 0x7f020094
+			public const int settings = 2130837652;
+			
+			// aapt resource value: 0x7f020095
+			public const int side_nav_bar = 2130837653;
+			
+			// aapt resource value: 0x7f020096
+			public const int sleet = 2130837654;
+			
+			// aapt resource value: 0x7f020097
+			public const int snow = 2130837655;
+			
+			// aapt resource value: 0x7f020098
+			public const int tooltip_frame_dark = 2130837656;
+			
+			// aapt resource value: 0x7f020099
+			public const int tooltip_frame_light = 2130837657;
+			
+			// aapt resource value: 0x7f02009a
+			public const int wind = 2130837658;
 			
 			static Drawable()
 			{
@@ -3436,8 +3469,8 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d0046
 			public const int SYM = 2131558470;
 			
-			// aapt resource value: 0x7f0d00cb
-			public const int action0 = 2131558603;
+			// aapt resource value: 0x7f0d00d7
+			public const int action0 = 2131558615;
 			
 			// aapt resource value: 0x7f0d0094
 			public const int action_bar = 2131558548;
@@ -3460,17 +3493,17 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d0070
 			public const int action_bar_title = 2131558512;
 			
-			// aapt resource value: 0x7f0d00c8
-			public const int action_container = 2131558600;
+			// aapt resource value: 0x7f0d00d4
+			public const int action_container = 2131558612;
 			
 			// aapt resource value: 0x7f0d0095
 			public const int action_context_bar = 2131558549;
 			
-			// aapt resource value: 0x7f0d00cf
-			public const int action_divider = 2131558607;
+			// aapt resource value: 0x7f0d00db
+			public const int action_divider = 2131558619;
 			
-			// aapt resource value: 0x7f0d00c9
-			public const int action_image = 2131558601;
+			// aapt resource value: 0x7f0d00d5
+			public const int action_image = 2131558613;
 			
 			// aapt resource value: 0x7f0d0003
 			public const int action_menu_divider = 2131558403;
@@ -3487,14 +3520,14 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d0072
 			public const int action_mode_close_button = 2131558514;
 			
-			// aapt resource value: 0x7f0d00fc
-			public const int action_settings = 2131558652;
+			// aapt resource value: 0x7f0d0107
+			public const int action_settings = 2131558663;
 			
-			// aapt resource value: 0x7f0d00ca
-			public const int action_text = 2131558602;
+			// aapt resource value: 0x7f0d00d6
+			public const int action_text = 2131558614;
 			
-			// aapt resource value: 0x7f0d00d8
-			public const int actions = 2131558616;
+			// aapt resource value: 0x7f0d00e4
+			public const int actions = 2131558628;
 			
 			// aapt resource value: 0x7f0d0073
 			public const int activity_chooser_view_content = 2131558515;
@@ -3502,20 +3535,20 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d00ab
 			public const int activity_dashboard = 2131558571;
 			
-			// aapt resource value: 0x7f0d00bb
-			public const int activity_forgot = 2131558587;
+			// aapt resource value: 0x7f0d00c6
+			public const int activity_forgot = 2131558598;
 			
-			// aapt resource value: 0x7f0d00e3
-			public const int activity_main = 2131558627;
+			// aapt resource value: 0x7f0d00ef
+			public const int activity_main = 2131558639;
 			
-			// aapt resource value: 0x7f0d00ec
-			public const int activity_sign_up = 2131558636;
+			// aapt resource value: 0x7f0d00f7
+			public const int activity_sign_up = 2131558647;
 			
 			// aapt resource value: 0x7f0d0036
 			public const int add = 2131558454;
 			
-			// aapt resource value: 0x7f0d00c4
-			public const int addNewLocationBtn = 2131558596;
+			// aapt resource value: 0x7f0d00d0
+			public const int addNewLocationBtn = 2131558608;
 			
 			// aapt resource value: 0x7f0d0024
 			public const int adjust_height = 2131558436;
@@ -3538,8 +3571,8 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d002a
 			public const int auto = 2131558442;
 			
-			// aapt resource value: 0x7f0d00c3
-			public const int autoComplete = 2131558595;
+			// aapt resource value: 0x7f0d00cc
+			public const int autoComplete = 2131558604;
 			
 			// aapt resource value: 0x7f0d003e
 			public const int beginning = 2131558462;
@@ -3568,8 +3601,23 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d0079
 			public const int buttonPanel = 2131558521;
 			
-			// aapt resource value: 0x7f0d00cc
-			public const int cancel_action = 2131558604;
+			// aapt resource value: 0x7f0d00d8
+			public const int cancel_action = 2131558616;
+			
+			// aapt resource value: 0x7f0d00c2
+			public const int cardHumidity = 2131558594;
+			
+			// aapt resource value: 0x7f0d00c1
+			public const int cardSummary = 2131558593;
+			
+			// aapt resource value: 0x7f0d00c5
+			public const int cardTidal = 2131558597;
+			
+			// aapt resource value: 0x7f0d00c4
+			public const int cardWindDirection = 2131558596;
+			
+			// aapt resource value: 0x7f0d00c3
+			public const int cardWindSpeed = 2131558595;
 			
 			// aapt resource value: 0x7f0d0054
 			public const int center = 2131558484;
@@ -3583,8 +3631,11 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d008d
 			public const int checkbox = 2131558541;
 			
-			// aapt resource value: 0x7f0d00d4
-			public const int chronometer = 2131558612;
+			// aapt resource value: 0x7f0d00bd
+			public const int checkboxSave = 2131558589;
+			
+			// aapt resource value: 0x7f0d00e0
+			public const int chronometer = 2131558624;
 			
 			// aapt resource value: 0x7f0d0068
 			public const int clip_horizontal = 2131558504;
@@ -3616,14 +3667,17 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d002b
 			public const int dark = 2131558443;
 			
+			// aapt resource value: 0x7f0d00bc
+			public const int dateLabel = 2131558588;
+			
 			// aapt resource value: 0x7f0d0092
 			public const int decor_content_parent = 2131558546;
 			
 			// aapt resource value: 0x7f0d0076
 			public const int default_activity_button = 2131558518;
 			
-			// aapt resource value: 0x7f0d00dc
-			public const int delete_row_btn = 2131558620;
+			// aapt resource value: 0x7f0d00e8
+			public const int delete_row_btn = 2131558632;
 			
 			// aapt resource value: 0x7f0d00b4
 			public const int design_bottom_sheet = 2131558580;
@@ -3646,14 +3700,20 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d00ad
 			public const int drawer_layout = 2131558573;
 			
+			// aapt resource value: 0x7f0d00cd
+			public const int dropdownPickDay = 2131558605;
+			
+			// aapt resource value: 0x7f0d00ce
+			public const int dropdownPickHour = 2131558606;
+			
 			// aapt resource value: 0x7f0d0096
 			public const int edit_query = 2131558550;
 			
 			// aapt resource value: 0x7f0d003f
 			public const int end = 2131558463;
 			
-			// aapt resource value: 0x7f0d00da
-			public const int end_padder = 2131558618;
+			// aapt resource value: 0x7f0d00e6
+			public const int end_padder = 2131558630;
 			
 			// aapt resource value: 0x7f0d004e
 			public const int enterAlways = 2131558478;
@@ -3688,29 +3748,26 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d0063
 			public const int @fixed = 2131558499;
 			
-			// aapt resource value: 0x7f0d00c1
-			public const int forecast_textview = 2131558593;
-			
-			// aapt resource value: 0x7f0d00c2
-			public const int forecast_textview3 = 2131558594;
+			// aapt resource value: 0x7f0d00bf
+			public const int forecast_icon = 2131558591;
 			
 			// aapt resource value: 0x7f0d006e
 			public const int forever = 2131558510;
 			
-			// aapt resource value: 0x7f0d00c0
-			public const int forgot_btn_back = 2131558592;
+			// aapt resource value: 0x7f0d00cb
+			public const int forgot_btn_back = 2131558603;
 			
-			// aapt resource value: 0x7f0d00bf
-			public const int forgot_btn_reset = 2131558591;
+			// aapt resource value: 0x7f0d00ca
+			public const int forgot_btn_reset = 2131558602;
 			
-			// aapt resource value: 0x7f0d00be
-			public const int forgot_email = 2131558590;
+			// aapt resource value: 0x7f0d00c9
+			public const int forgot_email = 2131558601;
 			
-			// aapt resource value: 0x7f0d00bd
-			public const int forgot_input_email = 2131558589;
+			// aapt resource value: 0x7f0d00c8
+			public const int forgot_input_email = 2131558600;
 			
-			// aapt resource value: 0x7f0d00bc
-			public const int forgot_message = 2131558588;
+			// aapt resource value: 0x7f0d00c7
+			public const int forgot_message = 2131558599;
 			
 			// aapt resource value: 0x7f0d00ac
 			public const int fragment_container = 2131558572;
@@ -3730,8 +3787,8 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d0078
 			public const int icon = 2131558520;
 			
-			// aapt resource value: 0x7f0d00d9
-			public const int icon_group = 2131558617;
+			// aapt resource value: 0x7f0d00e5
+			public const int icon_group = 2131558629;
 			
 			// aapt resource value: 0x7f0d0027
 			public const int icon_only = 2131558439;
@@ -3742,11 +3799,11 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d0075
 			public const int image = 2131558517;
 			
-			// aapt resource value: 0x7f0d00c6
-			public const int imageView = 2131558598;
+			// aapt resource value: 0x7f0d00d2
+			public const int imageView = 2131558610;
 			
-			// aapt resource value: 0x7f0d00d5
-			public const int info = 2131558613;
+			// aapt resource value: 0x7f0d00e1
+			public const int info = 2131558625;
 			
 			// aapt resource value: 0x7f0d006f
 			public const int italic = 2131558511;
@@ -3778,35 +3835,38 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d0077
 			public const int list_item = 2131558519;
 			
-			// aapt resource value: 0x7f0d00e9
-			public const int login_btn_forgot_password = 2131558633;
+			// aapt resource value: 0x7f0d00be
+			public const int locationLabel = 2131558590;
 			
-			// aapt resource value: 0x7f0d00e8
-			public const int login_btn_login = 2131558632;
+			// aapt resource value: 0x7f0d00f4
+			public const int login_btn_forgot_password = 2131558644;
 			
-			// aapt resource value: 0x7f0d00eb
-			public const int login_btn_sign_up = 2131558635;
-			
-			// aapt resource value: 0x7f0d00e5
-			public const int login_email = 2131558629;
-			
-			// aapt resource value: 0x7f0d00e4
-			public const int login_input_email = 2131558628;
-			
-			// aapt resource value: 0x7f0d00e6
-			public const int login_input_password = 2131558630;
-			
-			// aapt resource value: 0x7f0d00ea
-			public const int login_layout_or = 2131558634;
-			
-			// aapt resource value: 0x7f0d00e7
-			public const int login_password = 2131558631;
+			// aapt resource value: 0x7f0d00c0
+			public const int login_btn_login = 2131558592;
 			
 			// aapt resource value: 0x7f0d00f6
-			public const int masked = 2131558646;
+			public const int login_btn_sign_up = 2131558646;
 			
-			// aapt resource value: 0x7f0d00ce
-			public const int media_actions = 2131558606;
+			// aapt resource value: 0x7f0d00f1
+			public const int login_email = 2131558641;
+			
+			// aapt resource value: 0x7f0d00f0
+			public const int login_input_email = 2131558640;
+			
+			// aapt resource value: 0x7f0d00f2
+			public const int login_input_password = 2131558642;
+			
+			// aapt resource value: 0x7f0d00f5
+			public const int login_layout_or = 2131558645;
+			
+			// aapt resource value: 0x7f0d00f3
+			public const int login_password = 2131558643;
+			
+			// aapt resource value: 0x7f0d0101
+			public const int masked = 2131558657;
+			
+			// aapt resource value: 0x7f0d00da
+			public const int media_actions = 2131558618;
 			
 			// aapt resource value: 0x7f0d00a3
 			public const int message = 2131558563;
@@ -3826,23 +3886,23 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d0037
 			public const int multiply = 2131558455;
 			
-			// aapt resource value: 0x7f0d00f7
-			public const int nav_forecast = 2131558647;
+			// aapt resource value: 0x7f0d0102
+			public const int nav_forecast = 2131558658;
 			
-			// aapt resource value: 0x7f0d00fb
-			public const int nav_logout = 2131558651;
+			// aapt resource value: 0x7f0d0106
+			public const int nav_logout = 2131558662;
 			
-			// aapt resource value: 0x7f0d00f9
-			public const int nav_saved_forecasts = 2131558649;
+			// aapt resource value: 0x7f0d0104
+			public const int nav_saved_forecasts = 2131558660;
 			
-			// aapt resource value: 0x7f0d00f8
-			public const int nav_saved_locations = 2131558648;
+			// aapt resource value: 0x7f0d0103
+			public const int nav_saved_locations = 2131558659;
 			
-			// aapt resource value: 0x7f0d00fa
-			public const int nav_settings = 2131558650;
+			// aapt resource value: 0x7f0d0105
+			public const int nav_settings = 2131558661;
 			
-			// aapt resource value: 0x7f0d00c7
-			public const int nav_user_email = 2131558599;
+			// aapt resource value: 0x7f0d00d3
+			public const int nav_user_email = 2131558611;
 			
 			// aapt resource value: 0x7f0d00ae
 			public const int nav_view = 2131558574;
@@ -3859,14 +3919,14 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d002e
 			public const int normal = 2131558446;
 			
-			// aapt resource value: 0x7f0d00d7
-			public const int notification_background = 2131558615;
+			// aapt resource value: 0x7f0d00e3
+			public const int notification_background = 2131558627;
 			
-			// aapt resource value: 0x7f0d00d1
-			public const int notification_main_column = 2131558609;
+			// aapt resource value: 0x7f0d00dd
+			public const int notification_main_column = 2131558621;
 			
-			// aapt resource value: 0x7f0d00d0
-			public const int notification_main_column_container = 2131558608;
+			// aapt resource value: 0x7f0d00dc
+			public const int notification_main_column_container = 2131558620;
 			
 			// aapt resource value: 0x7f0d0067
 			public const int outline = 2131558503;
@@ -3892,20 +3952,26 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d008e
 			public const int radio = 2131558542;
 			
-			// aapt resource value: 0x7f0d00c5
-			public const int recyclerView = 2131558597;
+			// aapt resource value: 0x7f0d00d1
+			public const int recyclerView = 2131558609;
+			
+			// aapt resource value: 0x7f0d00cf
+			public const int recyclerView2 = 2131558607;
 			
 			// aapt resource value: 0x7f0d005c
 			public const int right = 2131558492;
 			
-			// aapt resource value: 0x7f0d00d6
-			public const int right_icon = 2131558614;
+			// aapt resource value: 0x7f0d00e2
+			public const int right_icon = 2131558626;
 			
-			// aapt resource value: 0x7f0d00d2
-			public const int right_side = 2131558610;
+			// aapt resource value: 0x7f0d00de
+			public const int right_side = 2131558622;
 			
-			// aapt resource value: 0x7f0d00db
-			public const int rowText = 2131558619;
+			// aapt resource value: 0x7f0d00bb
+			public const int root = 2131558587;
+			
+			// aapt resource value: 0x7f0d00e7
+			public const int rowText = 2131558631;
 			
 			// aapt resource value: 0x7f0d000c
 			public const int save_image_matrix = 2131558412;
@@ -3970,23 +4036,23 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d0056
 			public const int selected = 2131558486;
 			
-			// aapt resource value: 0x7f0d00e1
-			public const int settings_btn_change_pass = 2131558625;
+			// aapt resource value: 0x7f0d00ed
+			public const int settings_btn_change_pass = 2131558637;
 			
-			// aapt resource value: 0x7f0d00e2
-			public const int settings_clear = 2131558626;
+			// aapt resource value: 0x7f0d00ee
+			public const int settings_clear = 2131558638;
 			
-			// aapt resource value: 0x7f0d00df
-			public const int settings_input_newpassword = 2131558623;
+			// aapt resource value: 0x7f0d00eb
+			public const int settings_input_newpassword = 2131558635;
 			
-			// aapt resource value: 0x7f0d00e0
-			public const int settings_newpassword = 2131558624;
+			// aapt resource value: 0x7f0d00ec
+			public const int settings_newpassword = 2131558636;
 			
-			// aapt resource value: 0x7f0d00dd
-			public const int settings_root = 2131558621;
+			// aapt resource value: 0x7f0d00e9
+			public const int settings_root = 2131558633;
 			
-			// aapt resource value: 0x7f0d00de
-			public const int settings_username = 2131558622;
+			// aapt resource value: 0x7f0d00ea
+			public const int settings_username = 2131558634;
 			
 			// aapt resource value: 0x7f0d008a
 			public const int shortcut = 2131558538;
@@ -4000,29 +4066,29 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d0034
 			public const int showTitle = 2131558452;
 			
-			// aapt resource value: 0x7f0d00f2
-			public const int signup_btn_forgot_password = 2131558642;
+			// aapt resource value: 0x7f0d00fd
+			public const int signup_btn_forgot_password = 2131558653;
 			
-			// aapt resource value: 0x7f0d00f4
-			public const int signup_btn_login = 2131558644;
+			// aapt resource value: 0x7f0d00ff
+			public const int signup_btn_login = 2131558655;
 			
-			// aapt resource value: 0x7f0d00f1
-			public const int signup_btn_register = 2131558641;
+			// aapt resource value: 0x7f0d00fc
+			public const int signup_btn_register = 2131558652;
 			
-			// aapt resource value: 0x7f0d00ee
-			public const int signup_email = 2131558638;
+			// aapt resource value: 0x7f0d00f9
+			public const int signup_email = 2131558649;
 			
-			// aapt resource value: 0x7f0d00ed
-			public const int signup_input_email = 2131558637;
+			// aapt resource value: 0x7f0d00f8
+			public const int signup_input_email = 2131558648;
 			
-			// aapt resource value: 0x7f0d00ef
-			public const int signup_input_password = 2131558639;
+			// aapt resource value: 0x7f0d00fa
+			public const int signup_input_password = 2131558650;
 			
-			// aapt resource value: 0x7f0d00f3
-			public const int signup_layout_or = 2131558643;
+			// aapt resource value: 0x7f0d00fe
+			public const int signup_layout_or = 2131558654;
 			
-			// aapt resource value: 0x7f0d00f0
-			public const int signup_password = 2131558640;
+			// aapt resource value: 0x7f0d00fb
+			public const int signup_password = 2131558651;
 			
 			// aapt resource value: 0x7f0d00af
 			public const int smallLabel = 2131558575;
@@ -4060,8 +4126,8 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d005d
 			public const int start = 2131558493;
 			
-			// aapt resource value: 0x7f0d00cd
-			public const int status_bar_latest_event_content = 2131558605;
+			// aapt resource value: 0x7f0d00d9
+			public const int status_bar_latest_event_content = 2131558617;
 			
 			// aapt resource value: 0x7f0d0062
 			public const int stretch = 2131558498;
@@ -4111,8 +4177,8 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d001a
 			public const int textinput_helper_text = 2131558426;
 			
-			// aapt resource value: 0x7f0d00d3
-			public const int time = 2131558611;
+			// aapt resource value: 0x7f0d00df
+			public const int time = 2131558623;
 			
 			// aapt resource value: 0x7f0d0023
 			public const int title = 2131558435;
@@ -4165,8 +4231,8 @@ namespace Tidalio
 			// aapt resource value: 0x7f0d001b
 			public const int view_offset_helper = 2131558427;
 			
-			// aapt resource value: 0x7f0d00f5
-			public const int visible = 2131558645;
+			// aapt resource value: 0x7f0d0100
+			public const int visible = 2131558656;
 			
 			// aapt resource value: 0x7f0d0029
 			public const int wide = 2131558441;
@@ -4418,94 +4484,97 @@ namespace Tidalio
 			public const int design_text_input_password_icon = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int ForgotPassword = 2130968623;
+			public const int forecastCard = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int fragmentForecast = 2130968624;
+			public const int ForgotPassword = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int fragmentSavedForecasts = 2130968625;
+			public const int fragmentForecast = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int fragmentSavedLocations = 2130968626;
+			public const int fragmentSavedForecasts = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int mtrl_layout_snackbar = 2130968627;
+			public const int fragmentSavedLocations = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int mtrl_layout_snackbar_include = 2130968628;
+			public const int mtrl_layout_snackbar = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int nav_header_main = 2130968629;
+			public const int mtrl_layout_snackbar_include = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int notification_action = 2130968630;
+			public const int nav_header_main = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int notification_action_tombstone = 2130968631;
+			public const int notification_action = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int notification_media_action = 2130968632;
+			public const int notification_action_tombstone = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int notification_media_cancel_action = 2130968633;
+			public const int notification_media_action = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int notification_template_big_media = 2130968634;
+			public const int notification_media_cancel_action = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int notification_template_big_media_custom = 2130968635;
+			public const int notification_template_big_media = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int notification_template_big_media_narrow = 2130968636;
+			public const int notification_template_big_media_custom = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int notification_template_big_media_narrow_custom = 2130968637;
+			public const int notification_template_big_media_narrow = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int notification_template_custom_big = 2130968638;
+			public const int notification_template_big_media_narrow_custom = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int notification_template_icon_group = 2130968639;
+			public const int notification_template_custom_big = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int notification_template_lines_media = 2130968640;
+			public const int notification_template_icon_group = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int notification_template_media = 2130968641;
+			public const int notification_template_lines_media = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int notification_template_media_custom = 2130968642;
+			public const int notification_template_media = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int notification_template_part_chronometer = 2130968643;
+			public const int notification_template_media_custom = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int notification_template_part_time = 2130968644;
+			public const int notification_template_part_chronometer = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int savedLocationRow = 2130968645;
+			public const int notification_template_part_time = 2130968645;
 			
 			// aapt resource value: 0x7f040046
-			public const int select_dialog_item_material = 2130968646;
+			public const int savedLocationRow = 2130968646;
 			
 			// aapt resource value: 0x7f040047
-			public const int select_dialog_multichoice_material = 2130968647;
+			public const int select_dialog_item_material = 2130968647;
 			
 			// aapt resource value: 0x7f040048
-			public const int select_dialog_singlechoice_material = 2130968648;
+			public const int select_dialog_multichoice_material = 2130968648;
 			
 			// aapt resource value: 0x7f040049
-			public const int Settings = 2130968649;
+			public const int select_dialog_singlechoice_material = 2130968649;
 			
 			// aapt resource value: 0x7f04004a
-			public const int SignIn = 2130968650;
+			public const int Settings = 2130968650;
 			
 			// aapt resource value: 0x7f04004b
-			public const int SignUp = 2130968651;
+			public const int SignIn = 2130968651;
 			
 			// aapt resource value: 0x7f04004c
-			public const int support_simple_spinner_dropdown_item = 2130968652;
+			public const int SignUp = 2130968652;
+			
+			// aapt resource value: 0x7f04004d
+			public const int support_simple_spinner_dropdown_item = 2130968653;
 			
 			static Layout()
 			{

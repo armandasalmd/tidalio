@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace Tidalio.Source.Models
+namespace Tidalio
 {
     public class TidalStation
     {

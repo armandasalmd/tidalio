@@ -28,5 +28,12 @@ namespace Tidalio
 
         public const string DarkSkyDomain = "https://api.darksky.net";
         public const string TidalDomain   = "https://admiraltyapi.azure-api.net";
+
+        public static ForecastCard GetSampleForecastCard()
+        {
+            // alt 0176 = °
+            string[] array = { "wind", "Coventry, United Kingdom", "16°C", "Rain till evening", "75%", "5.5m/s", "225°", "4.22m" };
+            return new ForecastCard(DateTime.Now, true, array);
+        }
     }
 }

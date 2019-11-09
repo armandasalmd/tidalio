@@ -69,6 +69,7 @@
     <Compile Include="Source\Activities\ForgotPassword.cs" />
     <Compile Include="Source\Activities\Settings.cs" />
     <Compile Include="Source\Activities\SignUp.cs" />
+    <Compile Include="Source\Adapters\SavedForecastsAdapter.cs" />
     <Compile Include="Source\Adapters\SavedLocationsAdapter.cs" />
     <Compile Include="Source\Fragments\Forecast.cs" />
     <Compile Include="Source\Fragments\SavedForecasts.cs" />
@@ -77,13 +78,13 @@
     <Compile Include="Source\Helpers\DarkSkyApi.cs" />
     <Compile Include="Source\Helpers\Functions.cs" />
     <Compile Include="Source\Helpers\TidalApi.cs" />
+    <Compile Include="Source\Models\ForecastCard.cs" />
     <Compile Include="Source\Models\Location.cs" />
     <Compile Include="Source\Helpers\Constants.cs" />
     <Compile Include="Source\Models\TidalStation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="google-services.json" />
-    <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -158,7 +159,11 @@
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\forecastCard.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ForgotPassword.axml">
       <SubType>Designer</SubType>
@@ -213,6 +218,39 @@
     <AndroidResource Include="Resources\layout\savedLocationRow.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\clear_day.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\clear_night.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\cloud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\fog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\partly_cloudy_day.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\partly_cloudy_night.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\rain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\sleet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\snow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\wind.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

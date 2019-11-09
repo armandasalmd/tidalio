@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Android.Widget;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -72,6 +73,25 @@ namespace Tidalio
                 Console.WriteLine(ex.Message);
             }
             return coords;
+        }
+
+        public static int GetIconDrawable(string icon)
+        {
+            int resId = Resource.Drawable.clear_day;
+            switch (icon)
+            {
+                case "fog": resId = Resource.Drawable.fog; break;
+                case "partly-cloudy-night": resId = Resource.Drawable.partly_cloudy_night; break;
+                case "partly-cloudy-day": resId = Resource.Drawable.partly_cloudy_day; break;
+                case "clear-day": resId = Resource.Drawable.clear_day; break;
+                case "clear-night": resId = Resource.Drawable.clear_night; break;
+                case "rain": resId = Resource.Drawable.rain; break;
+                case "snow": resId = Resource.Drawable.snow; break;
+                case "sleet": resId = Resource.Drawable.sleet; break;
+                case "wind": resId = Resource.Drawable.wind; break;
+                case "cloudy": resId = Resource.Drawable.cloud; break;
+            }
+            return resId;
         }
 
     }

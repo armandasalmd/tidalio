@@ -12,6 +12,7 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:hint="Add new location"
             android:minWidth="25px"
             android:minHeight="25px"
             android:id="@+id/autoComplete" />
