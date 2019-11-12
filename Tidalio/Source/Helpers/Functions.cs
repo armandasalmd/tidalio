@@ -94,5 +94,30 @@ namespace Tidalio
             return resId;
         }
 
+        public static string NormalizeString(string input)
+        {
+            // Makes every word first letter capital, others lower, removes spaces
+            string result = string.Empty;
+            try
+            {
+                string w = "";
+                string[] words = input.Split(' ');
+                for (int i = 0; i < words.Length; i++)
+                {
+                    w = words[i];
+                    result += w?.First().ToString().ToUpper() + w?.Substring(1).ToLower();
+                    if (i != words.Length - 1) // if it is not the last loop then add space
+                        result += " ";
+
+                }
+            } catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        //public static 
+
     }
 }

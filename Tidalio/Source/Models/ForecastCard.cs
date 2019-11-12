@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using DarkSkyApi;
+using Xamarin.Essentials;
 
 namespace Tidalio
 {
@@ -67,6 +69,30 @@ namespace Tidalio
                 waterLevel = other8arguments[7];
             } else
                 throw new Exception("To many string arguments!");            
+        }
+
+        public void Update(double lat, double lon, string location, string stationId)
+        {
+            var client = new DarkSkyService(Constants.DarkSkyKey);
+            DarkSkyApi.Models.Forecast f = Task.Run(() => client.GetTimeMachineWeatherAsync(lat, lon, DateTimeOffset.Now)).Result;
+            icon = f.Currently.Icon;
+            this.location = location;
+            double _temp = Math.Round(UnitConverters.FahrenheitToCelsius(f.Currently.Temperature), 1);
+            temperature = _temp.ToString() + "°C";
+            summary = f.Currently.Summary;
+            humidity = $"{(int)(f.Currently.Humidity * 100)}%";
+            windSpeed = string.Format("{0:0.00}m/s", f.Currently.WindSpeed / 2.237); // convert to m/s
+            // windSpeed = Math.Round(, ).ToString() + "m/s"; 
+            windDirection = ((int)(f.Currently.WindBearing)).ToString() + "°";
+
+            // TODO: waterLevel
+            waterLevel = TidalApi.GetInstance().GetWaterInfo(stationId);
+        }
+
+        public async void UpdateAsync(double lat, double lon)
+        {
+            var client = new DarkSkyService(Constants.DarkSkyKey);
+            DarkSkyApi.Models.Forecast forecast = await client.GetTimeMachineWeatherAsync(lat, lon, DateTimeOffset.Now);
         }
     }
 }

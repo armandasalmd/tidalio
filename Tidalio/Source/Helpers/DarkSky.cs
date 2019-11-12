@@ -10,23 +10,30 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using DarkSkyApi;
+using DarkSkyApi.Models;
 using Xamarin.Android.Net;
 
 namespace Tidalio
 {
-    public class DarkSkyApi
+    public class DarkSky
     {
-        private static DarkSkyApi instance;
+        private static DarkSky instance;
         private static HttpClient client;
-        private DarkSkyApi()
+        private DarkSky()
         {
             client = new HttpClient(new AndroidClientHandler());
         }
-        public static DarkSkyApi GetInstance()
+        public static DarkSky GetInstance()
         {
             if (instance == null)
-                instance = new DarkSkyApi();
+                instance = new DarkSky();
             return instance;
+        }
+
+        public static DarkSkyService GetClient()
+        {
+            return new DarkSkyService(Constants.DarkSkyKey);
         }
         // Code starts here
 

@@ -1,0 +1,8 @@
++ Add temperature in forecast card
++ Add water level in meters
+• Save checkboxs saves wheather forecast card
+• Time filtering
+• Implement not tidal station location forecast (just dont give the water level info - not available)
+• Add a Star icon to save a location
+• In tab saved locations, a click on location redirects you to forecast fragment and fills the address for you
+• In fragment savved forecast, unchecking actually deletes saved record

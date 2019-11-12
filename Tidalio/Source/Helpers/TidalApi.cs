@@ -12,6 +12,7 @@ using Android.Widget;
 using System.Net.Http;
 using Xamarin.Android.Net;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Tidalio
 {
@@ -33,8 +34,30 @@ namespace Tidalio
             return instance;
         }
 
+        public string GetWaterInfo(string stationId)
+        {
+            List<TidalEvent> eventList = FetchEvents(stationId);
+            // List contains different time data for station with stationID
+            if (eventList.Count > 0)
+                return eventList[0].ToString();
+            return string.Empty;
+        }
 
-        public string GetStations()
+        public List<TidalEvent> FetchEvents(string stationId, int duration = 1)
+        {
+            string response = GetInstance().GetTidalEventsJSON(stationId, duration);
+            List<Newton.TidalEventNewton> eventList = JsonConvert.DeserializeObject<List<Newton.TidalEventNewton>>(response);
+            return NewtonModelsConverter.TidalEventNewton_ToList_TidalEvent(eventList, stationId);
+        }
+
+        public List<TidalStation> FetchStations()
+        {
+            string response = GetInstance().GetStationsJSON();
+            Newton.TidalStationsNewton model = JsonConvert.DeserializeObject<Newton.TidalStationsNewton>(response);
+            return NewtonModelsConverter.TidalStationsNewton_ToList_TidalStation(model);
+        }
+
+        public string GetStationsJSON()
         {
             string callUrl = $"{Constants.TidalDomain}/uktidalapi/api/V1/Stations";
             var result = Task.Run(() => client.GetAsync(callUrl)).Result;
@@ -42,7 +65,7 @@ namespace Tidalio
             return resBody;
         }
 
-        public async Task<string> GetStationsAsync()
+        public async Task<string> GetStationsJSONAsync()
         {
             string callUrl = $"{Constants.TidalDomain}/uktidalapi/api/V1/Stations";
             var result = await client.GetAsync(callUrl);
@@ -50,7 +73,7 @@ namespace Tidalio
             return resBody;
         }
 
-        public string GetStation(string stationId)
+        public string GetStationJSON(string stationId)
         {
             string callUrl = $"{Constants.TidalDomain}/uktidalapi/api/V1/Stations/{stationId}";
             var result = Task.Run(() => client.GetAsync(callUrl)).Result;
@@ -58,7 +81,7 @@ namespace Tidalio
             return resBody;
         }
 
-        public async Task<string> GetStationAsync(string stationId)
+        public async Task<string> GetStationJSONAsync(string stationId)
         {
             string callUrl = $"{Constants.TidalDomain}/uktidalapi/api/V1/Stations/{stationId}";
             var result = await client.GetAsync(callUrl);
@@ -66,7 +89,7 @@ namespace Tidalio
             return resBody;
         }
 
-        public string GetTidalEvents(string stationId, int duration = 1)
+        public string GetTidalEventsJSON(string stationId, int duration = 1)
         {
             string callUrl = $"{Constants.TidalDomain}/uktidalapi/api/V1/Stations/{stationId}/TidalEvents?duration={duration}";
             var result = Task.Run(() => client.GetAsync(callUrl)).Result;
@@ -74,7 +97,7 @@ namespace Tidalio
             return resBody;
         }
 
-        public async Task<string> GetTidalEventsAsync(string stationId, int duration = 1)
+        public async Task<string> GetTidalEventsJSONAsync(string stationId, int duration = 1)
         {
             string callUrl = $"{Constants.TidalDomain}/uktidalapi/api/V1/Stations/{stationId}/TidalEvents?duration={duration}";
             var result = await client.GetAsync(callUrl);

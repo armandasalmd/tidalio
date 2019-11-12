@@ -11,6 +11,7 @@ using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
 
 namespace Tidalio
 {
@@ -26,7 +27,7 @@ namespace Tidalio
         {
             base.OnCreate(savedInstanceState);
             mList = getDataList();
-            // Create your fragment here
+           // Create your fragment here
         }
 
         private void InitRecycler(View view)

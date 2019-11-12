@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Design.Widget;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -23,8 +24,11 @@ namespace Tidalio
             summaryLabel, humidityLabel,
             windSpeedLabel, windDirectionLabel,
             tidalLabel;
+        AutoCompleteTextView autoComplete;
+        LinearLayout root;
 
         ForecastCard cardModel;
+        List<TidalStation> stations;
 
         public ForecastCard CardModel
         {
@@ -39,6 +43,8 @@ namespace Tidalio
         {
             base.OnCreate(savedInstanceState);
             cardModel = new ForecastCard();
+            //var temp = TidalApi.GetInstance().GetTidalEventsJSON("0112");
+            var temp2 = TidalApi.GetInstance().FetchEvents("0112");
         }
 
         private void InitSpinners(View view)
@@ -63,21 +69,53 @@ namespace Tidalio
 
         public void OnSearch()
         {
-            // update card component
-            cardModel = Constants.GetSampleForecastCard();
-            UpdateCardContents();
+            if (autoComplete.Text.Length >= 4)
+            {
+                string stationId = autoComplete.Text.Split(" ").Last();
+                double lat = 0, lon = 0;
+                if (stationId.Length >= 4)
+                {
+                    foreach (TidalStation s in stations)
+                    {
+                        if (s.Id == stationId)
+                        {
+                            lat = s.Lat;
+                            lon = s.Lon;
+                            break;
+                        }
+                    }
+                    if (cardModel != null && lat != 0 && lon != 0)
+                    {
+                        cardModel.Update(lat, lon, autoComplete.Text, stationId);
+                        UpdateCardContents();
+                    }
+                    else
+                    {
+                        DoSnackbar("Station was not found!");
+                    }                    
+                } else
+                {
+                    DoSnackbar("Wrong location!");
+                }
+            } else
+            {
+                DoSnackbar("You must select from dropdown!");
+            }
+
+            
         }
 
         public void UpdateCardContents()
         {
             dateLabel.Text = cardModel.DateFormated;
             locationLabel.Text = cardModel.Location;
-            summaryLabel.Text = cardModel.Summary;
+            summaryLabel.Text = $"{cardModel.Summary}|{cardModel.Temperature}";
             humidityLabel.Text = cardModel.Humidity;
             windSpeedLabel.Text = cardModel.WindSpeed;
             windDirectionLabel.Text = cardModel.WindDirection;
             tidalLabel.Text = cardModel.WaterLevel;
             forecastIcon.SetBackgroundResource(Functions.GetIconDrawable(cardModel.Icon));
+            
         }
 
         public void InitLabels(View view)
@@ -91,19 +129,41 @@ namespace Tidalio
             tidalLabel= view.FindViewById<TextView>(Resource.Id.cardTidal);
         }
 
+        private void InitAutoComplete()
+        {
+            // TODO: in the future make this function async that content loads faster
+            IList<string> completeOptions = new List<string>();
+            stations = TidalApi.GetInstance().FetchStations();
+            foreach(TidalStation s in stations)
+            {
+                completeOptions.Add(s.ToString());
+            }
+
+            ArrayAdapter<string> adapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleListItem1, completeOptions);
+            autoComplete.Adapter = adapter;
+        }
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
             View view = inflater.Inflate(Resource.Layout.fragmentForecast, container, false);
 
+            root = view.FindViewById<LinearLayout>(Resource.Id.root);
             checkboxSaved = view.FindViewById<CheckBox>(Resource.Id.checkboxSave);
             forecastIcon = view.FindViewById<ImageView>(Resource.Id.forecast_icon);
+            autoComplete = view.FindViewById<AutoCompleteTextView>(Resource.Id.autoComplete);
             InitSpinners(view);
             InitLabels(view);
             UpdateCardContents();
+            InitAutoComplete();
 
             return view;
             //return base.OnCreateView(inflater, container, savedInstanceState);
+        }
+        public void DoSnackbar(string message)
+        {
+            Snackbar snackBar = Snackbar.Make(root, message, Snackbar.LengthShort);
+            snackBar.Show();
         }
     }
 }
