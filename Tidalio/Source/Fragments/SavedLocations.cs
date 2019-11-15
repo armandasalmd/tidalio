@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
+﻿using Android.App;
+using Android.Gms.Tasks;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.Widget;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Newtonsoft.Json;
+using System;
 
 namespace Tidalio
 {
@@ -19,38 +13,43 @@ namespace Tidalio
     {
         private RecyclerView recyclerView;
         private SavedLocationsAdapter adapter;
-        private JavaList<string> mList;
+        private JavaList<Location> mList;
         private AutoCompleteTextView autoComplete;
         private Button addLocationBtn;
+
+        // private FirebaseFirestore database;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            mList = getDataList();
-           // Create your fragment here
+            mList = GetDataList();
+            // database = GetDatabase();
+            // Create your fragment here
         }
+
+        //private FirebaseFirestore GetDatabase()
+        //{
+        //    FirebaseFirestore database;
+        //    var app = AuthHelper.GetInstance(Activity).GetApp();
+        //    database = FirebaseFirestore.GetInstance(app);
+        //    return database;
+        //}
 
         private void InitRecycler(View view)
         {
             recyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerView);
 
+
+            // FetchData();
             adapter = new SavedLocationsAdapter(mList);
             recyclerView.HasFixedSize = true;
             recyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
             recyclerView.SetAdapter(adapter);
         }
 
-        public static JavaList<String> getDataList()
+        public static JavaList<Location> GetDataList()
         {
-            return new JavaList<string>
-            {
-                "Sombrero Mata",
-                "Shaka laka",
-                "Upi trama",
-                "Tolimi ketaa",
-                "Indigo vaikas",
-                "Kilop mita"
-            };
+            return new JavaList<Location>();
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -74,8 +73,33 @@ namespace Tidalio
             {
                 adapter.AddRow(dataToAdd);
                 autoComplete.Text = string.Empty;
+
             }
-            //adapter.AddRow()
         }
+
+        //private void FetchData()
+        //{
+        //    database.Collection("locations").Get().AddOnSuccessListener(this);
+        //}
+
+        /*public void OnSuccess(Java.Lang.Object result)
+        {
+            var snapshot = (QuerySnapshot)result;
+            if (!snapshot.IsEmpty)
+            {
+                var documents = snapshot.Documents;
+                mList.Clear();
+                foreach (DocumentSnapshot item in documents)
+                {
+                    string address = item.Get("Address") != null ? item.Get("Address").ToString() : "undefined";
+                    double lat = (double)item.Get("Latitude");
+                    double lon = (double)item.Get("Longitude");
+                    Location loc = new Location(address, lat, lon);
+                    mList.Add(loc);
+                }
+            }
+        }*/
     }
 }
+
+// load, add, delete

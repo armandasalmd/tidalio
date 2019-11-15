@@ -15,13 +15,13 @@ namespace Tidalio
 {
     class SavedLocationsAdapter : RecyclerView.Adapter
     {
-        private readonly JavaList<String> displayData;
-        public JavaList<String> DisplayData
+        private readonly JavaList<Location> displayData;
+        public JavaList<Location> DisplayData
         {
             get { return displayData; }
         }
 
-        public SavedLocationsAdapter(JavaList<String> data)
+        public SavedLocationsAdapter(JavaList<Location> data)
         {
             displayData = data;
         }
@@ -40,7 +40,7 @@ namespace Tidalio
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             MyViewholder h = holder as MyViewholder;
-            h.rowText.Text = displayData[position];
+            h.rowText.Text = displayData[position].Address;
             
         }
 

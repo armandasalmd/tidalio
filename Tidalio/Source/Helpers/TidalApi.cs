@@ -43,11 +43,50 @@ namespace Tidalio
             return string.Empty;
         }
 
+        public string GetWaterInfo(string stationId, int addDays = 0, int hour = 0)
+        {
+            List<TidalEvent> eventList = FetchEvents(stationId, addDays + 1);
+            eventList = FilterEventsByLastDate(eventList); // filtering by date
+            // List contains different time data for station with stationID
+            int matchedTimeEventId = eventList.Count - 1; // select last tidal record as backup
+            for (int i = 0; i < eventList.Count; i++)
+            {
+                if (eventList[i].GetDateTimeObj().Hour >= hour)
+                {
+                    matchedTimeEventId = i;
+                    break;
+                }
+            }
+            if (matchedTimeEventId >= 0 && matchedTimeEventId < eventList.Count)
+                return eventList[matchedTimeEventId].ToString();
+            // Default cases
+            return string.Empty;
+        }
+
         public List<TidalEvent> FetchEvents(string stationId, int duration = 1)
         {
             string response = GetInstance().GetTidalEventsJSON(stationId, duration);
             List<Newton.TidalEventNewton> eventList = JsonConvert.DeserializeObject<List<Newton.TidalEventNewton>>(response);
             return NewtonModelsConverter.TidalEventNewton_ToList_TidalEvent(eventList, stationId);
+        }
+
+        public List<TidalEvent> FilterEventsByLastDate(List<TidalEvent> dataList)
+        {
+            // a data list events are different time, 
+            // this function takes latest date and leaves only same date events
+            if (dataList.Count > 1)
+            {
+                List<TidalEvent> resultList = new List<TidalEvent>();
+                TidalEvent lastEven = dataList.Last();
+                string extractDate = lastEven.DateTime.Substring(0, 10); // i.e. 2019-11-12
+                foreach(TidalEvent t in dataList)
+                {
+                    if (t.DateTime.StartsWith(extractDate))
+                        resultList.Add(t);
+                }
+                return resultList;
+            }
+            else return dataList;
         }
 
         public List<TidalStation> FetchStations()

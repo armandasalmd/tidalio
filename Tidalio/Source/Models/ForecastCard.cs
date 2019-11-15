@@ -25,7 +25,7 @@ namespace Tidalio
 
         public string DateFormated
         {
-            get { return date.ToString("dd/MM/yyyy hh:mm"); }
+            get { return date.ToString("dd/MM/yyyy HH:mm"); }
         }
         public DateTime Date { get { return date; } }
         public bool IsSaved { get { return saved; } set { saved = value; } }
@@ -36,7 +36,14 @@ namespace Tidalio
         public string Humidity { get { return humidity; } }
         public string WindSpeed { get { return windSpeed; } }
         public string WindDirection { get { return windDirection; } }
-        public string WaterLevel { get { return waterLevel; } }
+        public string WaterLevel {
+            get {
+                if (waterLevel == "0m")
+                    return "unavailable";
+                else
+                    return waterLevel;
+            }
+        }
 
         public ForecastCard()
         {
@@ -71,10 +78,14 @@ namespace Tidalio
                 throw new Exception("To many string arguments!");            
         }
 
-        public void Update(double lat, double lon, string location, string stationId)
+
+        public void Update(double lat, double lon, string location, string stationId, int addDays = 0, int addHours = 0)
         {
             var client = new DarkSkyService(Constants.DarkSkyKey);
-            DarkSkyApi.Models.Forecast f = Task.Run(() => client.GetTimeMachineWeatherAsync(lat, lon, DateTimeOffset.Now)).Result;
+            var time = DateTimeOffset.Now.AddDays(addDays).AddHours(addHours);
+
+            DarkSkyApi.Models.Forecast f = Task.Run(() => client.GetTimeMachineWeatherAsync(lat, lon, time)).Result;
+
             icon = f.Currently.Icon;
             this.location = location;
             double _temp = Math.Round(UnitConverters.FahrenheitToCelsius(f.Currently.Temperature), 1);
@@ -86,7 +97,11 @@ namespace Tidalio
             windDirection = ((int)(f.Currently.WindBearing)).ToString() + "°";
 
             // TODO: waterLevel
-            waterLevel = TidalApi.GetInstance().GetWaterInfo(stationId);
+            if (stationId != string.Empty)
+                waterLevel = TidalApi.GetInstance().GetWaterInfo(stationId, addDays, time.Hour);
+            else
+                waterLevel = "0m";
+            date = new DateTime(time.Year, time.Month, time.Day, time.Hour, 0, 0);
         }
 
         public async void UpdateAsync(double lat, double lon)

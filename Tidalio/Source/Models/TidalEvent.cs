@@ -35,7 +35,28 @@ namespace Tidalio
         }
 
         public string StationId { get => stationId; set => stationId = value; }
-        public string DateTime { get => dateTime; set => dateTime = value; }
+        public string DateTime {
+            get => dateTime.ToString();
+            set {
+                dateTime = value;
+            }
+        }
+
+        public System.DateTime GetDateTimeObj() {
+            try
+            {
+                int y = int.Parse(dateTime.Substring(0, 4)), 
+                    m = int.Parse(dateTime.Substring(5, 2)), 
+                    d = int.Parse(dateTime.Substring(8, 2));
+                int h = int.Parse(dateTime.Substring(11, 2)), 
+                    mm = int.Parse(dateTime.Substring(14, 2)), 
+                    s = int.Parse(dateTime.Substring(17, 2));
+                return new System.DateTime(y, m, d, h, mm, s);
+            } catch (Exception e)
+            {
+                return new DateTime();
+            }            
+        }
         public double Height { get => height; set => height = value; }
         public string Description { get => description; set => description = value; }
 

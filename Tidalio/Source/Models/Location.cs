@@ -39,7 +39,14 @@ namespace Tidalio
             }
         }
 
-        public Boolean IsValid
+        public Location(string location, double latitude, double longitude)
+        {
+            this.longitude = longitude;
+            this.latitude = latitude;
+            address = location;
+        }
+
+        public bool IsValid
         {
             get { return address != null && longitude != 0 && latitude != 0; }
         }
@@ -47,16 +54,19 @@ namespace Tidalio
         public string Address
         {
             get { return address; }
+            set { address = value; }
         }
 
         public double Latitude
         {
             get { return latitude; }
+            set { latitude = value; }
         }
 
         public double Longitude
         {
             get { return longitude; }
+            set { longitude = value; }
         }
     }
 }

@@ -55,6 +55,23 @@ namespace Tidalio
             return address;
         }
 
+        public static string GetDate(int addDays = 0)
+        {
+            DateTime d = DateTime.Now.AddDays(addDays);
+            return $"{d.Day}/{d.Month}/{d.Year}";
+        }
+        public static int HoursDeltaToNow(string time)
+        {
+            string hours = time.Split(':')[0];
+            try
+            {
+                return int.Parse(hours) - DateTimeOffset.Now.Hour;
+            } catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
         public static double[] CalculateCoordinates(string addr)
         {
             double[] coords = new double[2];

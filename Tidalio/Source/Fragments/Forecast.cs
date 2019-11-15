@@ -49,7 +49,12 @@ namespace Tidalio
 
         private void InitSpinners(View view)
         {
-            string[] dayList = { "Today", "Tomorrow", "11/11/2019", "12/11/2019", "13/11/2019" };
+            string[] dayList = {
+                "Today", "Tomorrow",
+                Functions.GetDate(2),
+                Functions.GetDate(3),
+                Functions.GetDate(4)
+            };
             string[] hourList = new string[24]; // "0" to "23"
             for (int i = 0; i < 24; i++)
                 hourList[i] = $"{i}:00";
@@ -65,6 +70,8 @@ namespace Tidalio
 
             daySpinner.Adapter = dayAdapter;
             hourSpinner.Adapter = hourAdapter;
+
+            hourSpinner.SetSelection(DateTimeOffset.Now.Hour);
         }
 
         public void OnSearch()
@@ -86,23 +93,52 @@ namespace Tidalio
                     }
                     if (cardModel != null && lat != 0 && lon != 0)
                     {
-                        cardModel.Update(lat, lon, autoComplete.Text, stationId);
+                        cardModel.Update(
+                            lat, lon, 
+                            autoComplete.Text, 
+                            stationId, 
+                            (int)(daySpinner.SelectedItemId), 
+                            Functions.HoursDeltaToNow(hourSpinner.SelectedItem.ToString())
+                            );
                         UpdateCardContents();
                     }
                     else
                     {
-                        DoSnackbar("Station was not found!");
+                        try
+                        {
+                            OnTidalStationMissingSearch();
+                        }
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
+                        DoSnackbar("Tidal station was not found!");
                     }                    
                 } else
                 {
-                    DoSnackbar("Wrong location!");
+                    OnTidalStationMissingSearch();
+                    DoSnackbar("Tidal station was not found!");
                 }
             } else
             {
-                DoSnackbar("You must select from dropdown!");
+                DoSnackbar("Location name is too short");
             }
 
             
+        }
+
+        public void OnTidalStationMissingSearch()
+        {
+            // search for forecast without tidal information
+            double[] coords = Functions.CalculateCoordinates(autoComplete.Text);
+            cardModel.Update(
+                coords[1], coords[0],
+                autoComplete.Text,
+                string.Empty,
+                (int)(daySpinner.SelectedItemId),
+                Functions.HoursDeltaToNow(hourSpinner.SelectedItem.ToString())
+            );
+            UpdateCardContents();
         }
 
         public void UpdateCardContents()
