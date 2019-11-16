@@ -16,12 +16,17 @@ namespace Tidalio
     [Activity(Label = "Dashboard", Theme = "@style/AppTheme.NoActionBar")]
     public class Dashboard : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
+        /// <summary>
+        /// UI Components
+        /// </summary>
         LinearLayout activity_dashboard;
         FloatingActionButton fab;
         Fragment active_fragment;
 
+        /// <summary>
+        /// Active fragment id
+        /// </summary>
         int active_fragment_id = Resource.Id.nav_forecast;
-
 
         FirebaseAuth auth;
 
@@ -44,22 +49,26 @@ namespace Tidalio
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
 
-            View headerView = navigationView.GetHeaderView(0);
             
-            //TextView navUsername = (TextView)headerView.findViewById<>();
+            // initialize firebase auth
             auth = AuthHelper.GetInstance(this).GetAuth();
+
+            // grabs toolbar view and set the title
+            View headerView = navigationView.GetHeaderView(0);
             headerView.FindViewById<TextView>(Resource.Id.nav_user_email).SetText(auth.CurrentUser.DisplayName, TextView.BufferType.Normal);
-            //navUsername.setText("Your Text Here");
-
-            //Init Firebase
-
-            //View
+            
+            // binding the view
             activity_dashboard = FindViewById<LinearLayout>(Resource.Id.activity_dashboard);
 
+            // show default fragment
             active_fragment = new Forecast();
             ShowFragment(active_fragment);
         }
 
+        /// <summary>
+        /// Starts "Today's forecast" fragment providing search location
+        /// </summary>
+        /// <param name="loc">Forecast location object</param>
         public void SearchLocation(Location loc)
         {
             active_fragment_id = Resource.Id.nav_forecast;
@@ -67,6 +76,7 @@ namespace Tidalio
             active_fragment = new Forecast(loc);
             ShowFragment(active_fragment);
         }
+
         public override void OnBackPressed()
         {
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
@@ -98,17 +108,24 @@ namespace Tidalio
             return base.OnOptionsItemSelected(item);
         }
 
+        /// <summary>
+        /// Load forecast data if fragment is "Today's Forecast"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
         [Obsolete]
         private void FabOnClick(object sender, EventArgs eventArgs)
         { 
-            //string display = "string"; //await Functions.GetCoords();
-            //DoSnackbar(display);
+            // invokes onSearch function in Forecast fragment if it is active
             if (active_fragment_id == Resource.Id.nav_forecast)
-            {
                 (active_fragment as Forecast).OnSearch();
-            }
         }
 
+        /// <summary>
+        /// Sidebar navigation menu click notifier
+        /// </summary>
+        /// <param name="item">Clicked menu item</param>
+        /// <returns>Success status</returns>
         [Obsolete]
         public bool OnNavigationItemSelected(IMenuItem item)
         {
@@ -149,6 +166,10 @@ namespace Tidalio
             return true;
         }
 
+        /// <summary>
+        /// Replaces activity root container with provided fragment
+        /// </summary>
+        /// <param name="fragment"></param>
         [Obsolete]
         private void ShowFragment(Fragment fragment)
         {
@@ -164,7 +185,10 @@ namespace Tidalio
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-
+        /// <summary>
+        /// Notifies firebase to sign out the user, 
+        /// redirects to login activity
+        /// </summary>
         public void LogoutUser()
         {
             auth.SignOut();
@@ -175,7 +199,10 @@ namespace Tidalio
             }
         }
 
-
+        /// <summary>
+        /// Shows snackbar alert
+        /// </summary>
+        /// <param name="message">Message to display in snackbar</param>
         public void DoSnackbar(string message)
         {
             Snackbar snackBar = Snackbar.Make(activity_dashboard, message, Snackbar.LengthShort);

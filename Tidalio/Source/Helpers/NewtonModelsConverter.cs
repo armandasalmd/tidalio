@@ -2,9 +2,17 @@
 
 namespace Tidalio
 {
+    /// <summary>
+    /// Converts 2 different type models: JSON model, to Regular model
+    /// </summary>
     public static class NewtonModelsConverter
     {
-        
+        /// <summary>
+        /// Converts ForecastCard model to JSON model
+        /// </summary>
+        /// <param name="user_email">User email</param>
+        /// <param name="f">Forecast card model instance</param>
+        /// <returns>Newton model</returns>
         public static Newton.ForecastCardNewton ForecastCard_To_ForecastCardNewton(string user_email, ForecastCard f)
         {
             Newton.ForecastCardNewton result = new Newton.ForecastCardNewton();
@@ -20,6 +28,13 @@ namespace Tidalio
             result.water_level = f.WaterLevel;
             return result;
         }
+
+        /// <summary>
+        /// Converts Location model to JSON model
+        /// </summary>
+        /// <param name="user_email">User email</param>
+        /// <param name="loc">Location model instance</param>
+        /// <returns>Newton model</returns>
         public static Newton.LocationNewton Location_To_LocationNewton(string user_email, Location loc)
         {
             Newton.LocationNewton result = new Newton.LocationNewton();
@@ -29,6 +44,12 @@ namespace Tidalio
             result.longitude = loc.Longitude;
             return result;
         }
+
+        /// <summary>
+        /// Converts JSON model to list of TidalStation models
+        /// </summary>
+        /// <param name="data">Instance to convert from</param>
+        /// <returns>List of TidalStation's</returns>
         public static List<TidalStation> TidalStationsNewton_ToList_TidalStation(Newton.TidalStationsNewton data)
         {
             List<TidalStation> result = new List<TidalStation>();
@@ -45,6 +66,12 @@ namespace Tidalio
             return result;
         }
 
+        /// <summary>
+        /// Converts JSON model to list of TidalEvent model
+        /// </summary>
+        /// <param name="dataList">Data to convert from</param>
+        /// <param name="stationId">Reference to station</param>
+        /// <returns>List of TidalEvent's</returns>
         public static List<TidalEvent> TidalEventNewton_ToList_TidalEvent(List<Newton.TidalEventNewton> dataList, string stationId)
         {
             List<TidalEvent> result = new List<TidalEvent>();
@@ -58,6 +85,11 @@ namespace Tidalio
             return result;
         }
 
+        /// <summary>
+        /// Convert JSON model list into List of Location model
+        /// </summary>
+        /// <param name="dataList">Data to convert from</param>
+        /// <returns>List of Location's</returns>
         public static List<Location> ListLocationNewton_ToList_Location(List<Newton.LocationNewton> dataList)
         {
             List<Location> result = new List<Location>();
@@ -71,6 +103,11 @@ namespace Tidalio
             return result;
         }
 
+        /// <summary>
+        /// Convert JSON model list into List of ForecastCard model
+        /// </summary>
+        /// <param name="dataList">Data to convert from</param>
+        /// <returns>List of ForecastCard's</returns>
         public static List<ForecastCard> ListForecasCardtNewton_ToList_ForecastCard(List<Newton.ForecastCardNewton> dataList)
         {
             List<ForecastCard> result = new List<ForecastCard>();

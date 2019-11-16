@@ -9,37 +9,54 @@ using Android.Widget;
 
 namespace Tidalio
 {
+    /// <summary>
+    /// An adapter for RecyclerView component 
+    /// used in Saved lcoations fragment to display user saved location
+    /// </summary>
     class SavedLocationsAdapter : RecyclerView.Adapter
     {
+        /// <summary>
+        /// List of data models to be displayed
+        /// </summary>
         private readonly List<Location> displayData;
+        /// <summary>
+        /// Main activity object
+        /// </summary>
         private Activity activity;
-        public List<Location> DisplayData
-        {
-            get { return displayData; }
-        }
+        public List<Location> DisplayData => displayData;
 
-        public SavedLocationsAdapter(Activity context, List<Location> data)
+        /// <summary>
+        /// Initialize adapter providing saved locations model data
+        /// </summary>
+        /// <param name="activ">Main activity</param>
+        /// <param name="data">Data model to display</param>
+        public SavedLocationsAdapter(Activity activ, List<Location> data)
         {
             displayData = data;
-            activity = context;
+            activity = activ;
         }
 
-        public override int ItemCount
-        {
-            get { return displayData.Count(); }
-        }
+        public override int ItemCount => displayData.Count();
 
+        /// <summary>
+        /// Add and show new row for recycler view
+        /// </summary>
+        /// <param name="data">Data row to add</param>
         public void AddRow(Location data)
         {
             displayData.Add(data);
             NotifyItemInserted(ItemCount - 1);
         }
 
+        /// <summary>
+        /// Initialize recyclerView row
+        /// </summary>
+        /// <param name="holder">Row view</param>
+        /// <param name="position">Number showing row position</param>
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             MyViewholder h = holder as MyViewholder;
             h.rowText.Text = displayData[position].Address;
-            
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -72,9 +89,7 @@ namespace Tidalio
                 root = itemView.FindViewById<View>(Resource.Id.row_root);
                 rowText = itemView.FindViewById<TextView>(Resource.Id.rowText);
                 deleteButton = itemView.FindViewById<ImageView>(Resource.Id.delete_row_btn);
-                
             }
-
         }
     }
 }

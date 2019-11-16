@@ -7,29 +7,12 @@ namespace Tidalio
 {
     public static class Functions
     {
-        public static long GetUnixTimestamp()
-        {
-            DateTime timeNow = DateTime.UtcNow;
-            return ((DateTimeOffset)timeNow).ToUnixTimeSeconds();
-        }
-
-        public static async Task<string> GetCoords(string address)
-        {
-            try
-            {
-                var locations = await Geocoding.GetLocationsAsync(address);
-                var location = locations?.FirstOrDefault();
-                if (location != null)
-                {
-                    return $"Latitude: {location.Latitude}, Longitude: {location.Longitude}";
-                }
-            } catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return "not found";
-        }
-
+        /// <summary>
+        /// Converts coordinates into address or location
+        /// </summary>
+        /// <param name="_latitude">Latitude</param>
+        /// <param name="_longitude">Longitude</param>
+        /// <returns>Address for given coordinates</returns>
         public static string CalculateAddress(double _latitude, double _longitude)
         {
             var address = "";
@@ -52,23 +35,40 @@ namespace Tidalio
             return address;
         }
 
+        /// <summary>
+        /// Generates date string
+        /// </summary>
+        /// <param name="addDays">Days count to add to today date</param>
+        /// <returns>Formated day/month/year string</returns>
         public static string GetDate(int addDays = 0)
         {
             DateTime d = DateTime.Now.AddDays(addDays);
             return $"{d.Day}/{d.Month}/{d.Year}";
         }
+
+        /// <summary>
+        /// Subtracts current hour with given HH:mm string hours
+        /// </summary>
+        /// <param name="time">Number of hours to subtract</param>
+        /// <returns>Number representing hours</returns>
         public static int HoursDeltaToNow(string time)
         {
             string hours = time.Split(':')[0];
             try
             {
                 return int.Parse(hours) - DateTimeOffset.Now.Hour;
-            } catch (Exception ex)
+            } catch (Exception)
             {
+                // if hours is not a number
                 return 0;
             }
         }
 
+        /// <summary>
+        /// Calculates coordinates for given address
+        /// </summary>
+        /// <param name="addr">Address</param>
+        /// <returns>Coordinates in double[2] - longitude, latitude</returns>
         public static double[] CalculateCoordinates(string addr)
         {
             double[] coords = new double[2];
@@ -89,6 +89,11 @@ namespace Tidalio
             return coords;
         }
 
+        /// <summary>
+        /// Returns drawable(image) resourse id
+        /// </summary>
+        /// <param name="icon">String description of icon</param>
+        /// <returns>Drawable Resourse Id</returns>
         public static int GetIconDrawable(string icon)
         {
             int resId = Resource.Drawable.clear_day;
@@ -108,6 +113,11 @@ namespace Tidalio
             return resId;
         }
 
+        /// <summary>
+        /// Removes spaces, single capital letter per word
+        /// </summary>
+        /// <param name="input">String to normalize</param>
+        /// <returns>Normalized string</returns>
         public static string NormalizeString(string input)
         {
             // Makes every word first letter capital, others lower, removes spaces
@@ -131,6 +141,11 @@ namespace Tidalio
             return result;
         }
 
+        /// <summary>
+        /// Replaces / with URL escape char %2F
+        /// </summary>
+        /// <param name="data">String to escape</param>
+        /// <returns>Escape ready string</returns>
         public static string EscapeBackslash(string data)
         {
             return data.Replace("/", "%2F");

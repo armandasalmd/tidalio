@@ -2,11 +2,19 @@
 
 namespace Tidalio
 {
+    /// <summary>
+    /// A model to hold data about particular location associated with forecast card
+    /// </summary>
     public class Location
     {
         private int id;
         private string address;
         private double longitude, latitude;
+        
+        /// <summary>
+        /// Initialized model, autofills coordinates according to the address
+        /// </summary>
+        /// <param name="address">Address of location you want to refer</param>
         public Location(string address)
         {
             this.address = address;
@@ -17,11 +25,15 @@ namespace Tidalio
                 longitude = coordinates[1];
             } catch (Exception ex)
             {
-                // Console.WriteLine(ex.message);
-                throw ex;
+                Console.WriteLine(ex.Message);
             }
         }
 
+        /// <summary>
+        /// Initialized model using coordinated. Address get automatically filled in using coordinates
+        /// </summary>
+        /// <param name="latitude">Location coordinate</param>
+        /// <param name="longitude">Location coordinate</param>
         public Location(double latitude, double longitude)
         {
             this.longitude = longitude;
@@ -32,11 +44,16 @@ namespace Tidalio
             }
             catch (Exception ex)
             {
-                // Console.WriteLine(ex.message);
-                throw ex;
+                Console.WriteLine(ex.Message);
             }
         }
 
+        /// <summary>
+        /// Initialized model with provided values
+        /// </summary>
+        /// <param name="location">Address of location</param>
+        /// <param name="latitude">Location coordinate</param>
+        /// <param name="longitude">Location coordinate</param>
         public Location(string location, double latitude, double longitude)
         {
             this.longitude = longitude;
@@ -44,6 +61,9 @@ namespace Tidalio
             address = location;
         }
 
+        /// <summary>
+        /// Checks if values are initialized
+        /// </summary>
         public bool IsValid
         {
             get { return address != null && longitude != 0 && latitude != 0; }

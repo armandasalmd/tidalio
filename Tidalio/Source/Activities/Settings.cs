@@ -22,8 +22,11 @@ namespace Tidalio
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Settings);
-
+            
+            // initialize firebase auth instance
             auth = AuthHelper.GetInstance(this).GetAuth();
+
+            // bind views to variables
             activity_root = FindViewById<LinearLayout>(Resource.Id.settings_root);
             input_pwd = FindViewById<EditText>(Resource.Id.settings_newpassword);
             btnChangePass = FindViewById<Button>(Resource.Id.settings_btn_change_pass);
@@ -32,10 +35,15 @@ namespace Tidalio
 
             username_view.SetText(auth.CurrentUser.Email, TextView.BufferType.Normal);
 
+            // set on click listeners
             btnChangePass.SetOnClickListener(this);
             btnClear.SetOnClickListener(this);
         }
 
+        /// <summary>
+        /// Notifies firebase to change the password
+        /// </summary>
+        /// <param name="newPassword">New password</param>
         private void ChangePassword(string newPassword)
         {
             FirebaseUser user = AuthHelper.GetInstance(this).GetAuth().CurrentUser;
@@ -57,6 +65,10 @@ namespace Tidalio
             }
         }
 
+        /// <summary>
+        /// Firebase callback identifying status of sign up
+        /// </summary>
+        /// <param name="task">Firebase result containing status</param>
         public void OnComplete(Task task)
         {
             if (task.IsSuccessful == true)
@@ -67,6 +79,11 @@ namespace Tidalio
                 DoSnackbar("Error while changing the password");
             }
         }
+
+        /// <summary>
+        /// Shows snackbar alert
+        /// </summary>
+        /// <param name="message">Message to display in snackbar</param>
         public void DoSnackbar(string message)
         {
             Snackbar snackBar = Snackbar.Make(activity_root, message, Snackbar.LengthShort);

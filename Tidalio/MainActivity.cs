@@ -13,7 +13,9 @@ namespace Tidalio
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity, IOnClickListener, IOnCompleteListener
     {
-
+        /// <summary>
+        /// UI components
+        /// </summary>
         Button btnLogin;
         EditText input_email, input_password;
         TextView btnSignUp, btnForgotPassword;
@@ -24,10 +26,10 @@ namespace Tidalio
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.SignIn);
 
-            //Init Firebase
+            // init Firebase
             AuthHelper.GetInstance(this);
 
-            //View
+            // binding UI components
             btnLogin = FindViewById<Button>(Resource.Id.login_btn_login);
             input_email = FindViewById<EditText>(Resource.Id.login_email);
             input_password = FindViewById<EditText>(Resource.Id.login_password);
@@ -35,12 +37,12 @@ namespace Tidalio
             btnForgotPassword = FindViewById<TextView>(Resource.Id.login_btn_forgot_password);
             activity_main = FindViewById<RelativeLayout>(Resource.Id.activity_main);
 
-
+            // setting action listeners
             btnSignUp.SetOnClickListener(this);
             btnLogin.SetOnClickListener(this);
             btnForgotPassword.SetOnClickListener(this);
 
-            //btnLogin.CallOnClick(); // TODO: delete when in production
+            //btnLogin.CallOnClick(); // enable for auto login (debug)
         }
 
         public void OnClick(View v)
@@ -60,6 +62,12 @@ namespace Tidalio
                 LoginUser(input_email.Text, input_password.Text);
             }
         }
+
+        /// <summary>
+        /// Calling firebase API to sign up
+        /// </summary>
+        /// <param name="email">email used for login</param>
+        /// <param name="password">password used for login</param>
         private void LoginUser(string email, string password)
         {
             //email = "test@test.com"; // TODO: remove in production
@@ -71,8 +79,15 @@ namespace Tidalio
             else if (!email.Contains("@"))
                 DoSnackbar("Enter valid email address");
             else
-                AuthHelper.GetInstance(this).GetAuth().SignInWithEmailAndPassword(email, password).AddOnCompleteListener(this);
+                AuthHelper.GetInstance(this).GetAuth()
+                    .SignInWithEmailAndPassword(email, password)
+                    .AddOnCompleteListener(this);
         }
+
+        /// <summary>
+        /// Firebase auth response. Notifies about login status
+        /// </summary>
+        /// <param name="task">firebase response</param>
         public void OnComplete(Task task)
         {
             if (task.IsSuccessful)
@@ -84,6 +99,10 @@ namespace Tidalio
                 DoSnackbar("Login Failed");
         }
 
+        /// <summary>
+        /// Shows snackbar alert
+        /// </summary>
+        /// <param name="message">Message to display in snackbar</param>
         public void DoSnackbar(string message)
         {
             Snackbar snackBar = Snackbar.Make(activity_main, message, Snackbar.LengthShort);

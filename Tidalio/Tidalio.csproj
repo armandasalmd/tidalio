@@ -77,7 +77,6 @@
     <Compile Include="Source\Fragments\SavedForecasts.cs" />
     <Compile Include="Source\Fragments\SavedLocations.cs" />
     <Compile Include="Source\Helpers\Auth.cs" />
-    <Compile Include="Source\Helpers\DarkSky.cs" />
     <Compile Include="Source\Helpers\Functions.cs" />
     <Compile Include="Source\Helpers\TidalApi.cs" />
     <Compile Include="Source\Helpers\NewtonModelsConverter.cs" />

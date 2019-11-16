@@ -14,20 +14,24 @@ namespace Tidalio
     [Activity(Label = "Forgot Password", Theme ="@style/AppTheme")]
     public class ForgotPassword : AppCompatActivity, IOnClickListener, IOnCompleteListener
     {
+        /// <summary>
+        /// UI Components
+        /// </summary>
         private EditText input_email;
         private Button btnResetPass;
         private TextView btnBack;
         private RelativeLayout activity_forgot;
+
         FirebaseAuth auth;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ForgotPassword);
 
-            //Init Firebase
+            // initialiazing firebase auth
             auth = AuthHelper.GetInstance(this).GetAuth();
 
-            //View
+            // binding the view to variables
             input_email = FindViewById<EditText>(Resource.Id.forgot_email);
             btnResetPass = FindViewById<Button>(Resource.Id.forgot_btn_reset);
             btnBack = FindViewById<TextView>(Resource.Id.forgot_btn_back);
@@ -53,12 +57,21 @@ namespace Tidalio
                     ResetPassword(input_email.Text);
             }
         }
+
+        /// <summary>
+        /// Notifies firebase to send an email with reset password link
+        /// </summary>
+        /// <param name="email">User email to reset password</param>
         private void ResetPassword(string email)
         {
             auth.SendPasswordResetEmail(email)
                 .AddOnCompleteListener(this, this);
         }
 
+        /// <summary>
+        /// Firebase callback identifying status of sign up
+        /// </summary>
+        /// <param name="task">Firebase result containing status</param>
         public void OnComplete(Task task)
         {
             if (task.IsSuccessful == false)
@@ -73,6 +86,10 @@ namespace Tidalio
             }
         }
 
+        /// <summary>
+        /// Shows snackbar alert
+        /// </summary>
+        /// <param name="message">Message to display in snackbar</param>
         public void DoSnackbar(string message)
         {
             Snackbar snackBar = Snackbar.Make(activity_forgot, message, Snackbar.LengthShort);

@@ -7,34 +7,52 @@ using Android.Widget;
 
 namespace Tidalio
 {
+    /// <summary>
+    /// An adapter for RecyclerView component 
+    /// used in Saved forecasts fragment to display forecast cards
+    /// </summary>
     class SavedForecastsAdapter : RecyclerView.Adapter
     {
-
-
+        /// <summary>
+        /// List of data models to be displayed
+        /// </summary>
         private readonly List<ForecastCard> displayData;
+        
+        /// <summary>
+        /// Main activity context
+        /// </summary>
         private Context context;
-        public List<ForecastCard> DisplayData
-        {
-            get { return displayData; }
-        }
 
+        public List<ForecastCard> DisplayData => displayData;
+
+        /// <summary>
+        /// Initialize adapter providing forecast model data
+        /// </summary>
+        /// <param name="ctx">Activity context</param>
+        /// <param name="data">Display data for each row</param>
         public SavedForecastsAdapter(Context ctx, List<ForecastCard> data)
         {
             displayData = data;
             context = ctx;
         }
 
-        public override int ItemCount
-        {
-            get { return displayData.Count(); }
-        }
+        public override int ItemCount => displayData.Count();
 
+        /// <summary>
+        /// Add and show new row for recycler view
+        /// </summary>
+        /// <param name="data">Data row to add</param>
         public void AddRow(ForecastCard data)
         {
             displayData.Add(data);
             NotifyItemInserted(ItemCount - 1);
         }
 
+        /// <summary>
+        /// Initialize recyclerView row
+        /// </summary>
+        /// <param name="holder">Row view</param>
+        /// <param name="position">Number showing row position</param>
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             MyViewholder h = holder as MyViewholder;
@@ -47,6 +65,7 @@ namespace Tidalio
             MyViewholder holder = new MyViewholder(v);
             holder.checkboxSaved.CheckedChange += (object sender, CompoundButton.CheckedChangeEventArgs e) =>
             {
+                // remove saved forecast card from web API and recyclerView
                 if (!e.IsChecked)
                 {
                     string user_email = AuthHelper.GetInstance(context).CurrentUserEmail;
@@ -59,6 +78,11 @@ namespace Tidalio
             return holder;
         }
 
+        /// <summary>
+        /// Fills data from data model into the view
+        /// </summary>
+        /// <param name="vh">Row view</param>
+        /// <param name="cardModel">Model data for row</param>
         public void UpdateCardContents(MyViewholder vh, ForecastCard cardModel)
         {
             vh.dateLabel.Text = cardModel.DateFormated;
@@ -77,9 +101,9 @@ namespace Tidalio
             public ImageView forecastIcon;
 
             public TextView dateLabel, locationLabel,
-            summaryLabel, humidityLabel,
-            windSpeedLabel, windDirectionLabel,
-            tidalLabel;
+                summaryLabel, humidityLabel,
+                windSpeedLabel, windDirectionLabel,
+                tidalLabel;
             public MyViewholder(View itemView) : base(itemView)
             {
                 checkboxSaved = itemView.FindViewById<CheckBox>(Resource.Id.checkboxSave);

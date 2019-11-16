@@ -14,7 +14,9 @@ namespace Tidalio
     [Activity(Label = "Sign Up", Theme ="@style/AppTheme")]
     public class SignUp : AppCompatActivity, IOnClickListener, IOnCompleteListener
     {
-
+        /// <summary>
+        /// UI components
+        /// </summary>
         Button btnSignup;
         TextView btnLogin, btnForgotPass;
         EditText input_email, input_password;
@@ -25,12 +27,11 @@ namespace Tidalio
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.SignUp);
-            // Create your application here
 
-            //InitFirebase
+            // initializing firebase auth
             auth = AuthHelper.GetInstance(this).GetAuth();
             
-            //View
+            // binding the views
             btnSignup = FindViewById<Button>(Resource.Id.signup_btn_register);
             btnLogin = FindViewById<TextView>(Resource.Id.signup_btn_login);
             btnForgotPass = FindViewById<TextView>(Resource.Id.signup_btn_forgot_password);
@@ -38,6 +39,7 @@ namespace Tidalio
             input_password = FindViewById<EditText>(Resource.Id.signup_password);
             activity_sign_up = FindViewById<RelativeLayout>(Resource.Id.activity_sign_up);
 
+            // setting on click listeners
             btnLogin.SetOnClickListener(this);
             btnForgotPass.SetOnClickListener(this);
             btnSignup.SetOnClickListener(this);
@@ -46,25 +48,37 @@ namespace Tidalio
         {
             if (v.Id == Resource.Id.signup_btn_login)
             {
+                // redirects to main login activity
                 StartActivity(new Intent(this, typeof(MainActivity)));
                 Finish();
             }
             else if (v.Id == Resource.Id.signup_btn_forgot_password)
             {
+                // start forget password activity
                 StartActivity(new Intent(this, typeof(ForgotPassword)));
                 Finish();
             }
             else if (v.Id == Resource.Id.signup_btn_register)
             {
+                // on sign up click. Sign up the user
                 SignUpUser(input_email.Text, input_password.Text);
             }
         }
 
+        /// <summary>
+        /// Notifies firebase about new account
+        /// </summary>
+        /// <param name="email">Email to sign up</param>
+        /// <param name="password">Password for new account</param>
         private void SignUpUser(string email, string password)
         {
             auth.CreateUserWithEmailAndPassword(email, password).AddOnCompleteListener(this, this);
         }
 
+        /// <summary>
+        /// Firebase callback identifying status of sign up
+        /// </summary>
+        /// <param name="task">Firebase result containing status</param>
         public void OnComplete(Task task)
         {
             if (task.IsSuccessful)
@@ -73,6 +87,10 @@ namespace Tidalio
                 DoSnackbar("Register Failed");
         }
 
+        /// <summary>
+        /// Shows snackbar alert
+        /// </summary>
+        /// <param name="message">Message to display in snackbar</param>
         public void DoSnackbar(string message)
         {
             Snackbar snackBar = Snackbar.Make(activity_sign_up, message, Snackbar.LengthShort);
