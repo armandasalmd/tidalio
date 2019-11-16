@@ -134,7 +134,10 @@ namespace Tidalio
             return result;
         }
 
-        //public static 
+        public static string EscapeBackslash(string data)
+        {
+            return data.Replace("/", "%2F");
+        }
 
     }
 }

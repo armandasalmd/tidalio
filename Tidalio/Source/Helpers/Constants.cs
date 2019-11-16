@@ -28,6 +28,7 @@ namespace Tidalio
 
         public const string DarkSkyDomain = "https://api.darksky.net";
         public const string TidalDomain   = "https://admiraltyapi.azure-api.net";
+        public const string TidalioDomain = "https://tidalioapi.armandasbark.now.sh";
 
         public static ForecastCard GetSampleForecastCard()
         {

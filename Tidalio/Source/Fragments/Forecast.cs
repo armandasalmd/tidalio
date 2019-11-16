@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Support.Design.Widget;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
 
@@ -29,6 +25,14 @@ namespace Tidalio
 
         ForecastCard cardModel;
         List<TidalStation> stations;
+        Location locToShow;
+
+
+        public Forecast() : base() { }
+        public Forecast(Location loc) : base()
+        {
+            locToShow = loc;
+        }
 
         public ForecastCard CardModel
         {
@@ -43,8 +47,6 @@ namespace Tidalio
         {
             base.OnCreate(savedInstanceState);
             cardModel = new ForecastCard();
-            //var temp = TidalApi.GetInstance().GetTidalEventsJSON("0112");
-            var temp2 = TidalApi.GetInstance().FetchEvents("0112");
         }
 
         private void InitSpinners(View view)
@@ -74,13 +76,12 @@ namespace Tidalio
             hourSpinner.SetSelection(DateTimeOffset.Now.Hour);
         }
 
-        public void OnSearch()
+        public void OnSearch(double lat = 0, double lon = 0)
         {
             if (autoComplete.Text.Length >= 4)
             {
                 string stationId = autoComplete.Text.Split(" ").Last();
-                double lat = 0, lon = 0;
-                if (stationId.Length >= 4)
+                if (stationId.Length == 4 && stationId.Length == 5)
                 {
                     foreach (TidalStation s in stations)
                     {
@@ -117,7 +118,6 @@ namespace Tidalio
                 } else
                 {
                     OnTidalStationMissingSearch();
-                    DoSnackbar("Tidal station was not found!");
                 }
             } else
             {
@@ -127,12 +127,18 @@ namespace Tidalio
             
         }
 
-        public void OnTidalStationMissingSearch()
+        public void OnTidalStationMissingSearch(double lat = 0, double lon = 0)
         {
             // search for forecast without tidal information
-            double[] coords = Functions.CalculateCoordinates(autoComplete.Text);
+            double[] coords = new double[2];
+            if (lat == 0 && lon == 0)
+            {
+                coords = Functions.CalculateCoordinates(autoComplete.Text);
+                lat = coords[1];
+                lon = coords[0];
+            }
             cardModel.Update(
-                coords[1], coords[0],
+                lat, lon,
                 autoComplete.Text,
                 string.Empty,
                 (int)(daySpinner.SelectedItemId),
@@ -192,10 +198,47 @@ namespace Tidalio
             InitLabels(view);
             UpdateCardContents();
             InitAutoComplete();
+            // saved location fragment list item triggered sets locToShow
+            if (locToShow != null)
+            {
+                autoComplete.Text = locToShow.Address;
+                OnSearch(locToShow.Longitude, locToShow.Latitude);
+            }
+
+            checkboxSaved.CheckedChange += CheckboxSaved_CheckedChange;
 
             return view;
             //return base.OnCreateView(inflater, container, savedInstanceState);
         }
+
+        private void CheckboxSaved_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        {
+            string user_email = AuthHelper.GetInstance(Activity).CurrentUserEmail;
+            if (cardModel.Location == "unknown")
+            {
+                ((CheckBox)sender).Checked = false;
+                DoSnackbar("You cannot save empty forecast!");
+                return;
+            }
+            if (e.IsChecked)
+            {
+                // post call to API
+                if (!cardModel.IsSaved)
+                {
+                    TidalioApi.GetInstance().PostCardAsync(user_email, cardModel);
+                    cardModel.IsSaved = true;
+                }
+            } else
+            {
+                // delete call to API
+                if (cardModel.IsSaved)
+                {
+                    TidalioApi.GetInstance().DeleteCardAsync(user_email, cardModel);
+                    cardModel.IsSaved = false;
+                }
+            }
+        }
+
         public void DoSnackbar(string message)
         {
             Snackbar snackBar = Snackbar.Make(root, message, Snackbar.LengthShort);

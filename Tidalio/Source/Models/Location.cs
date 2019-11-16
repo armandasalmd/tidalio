@@ -7,6 +7,7 @@ namespace Tidalio
 {
     public class Location
     {
+        private int id;
         private string address;
         private double longitude, latitude;
         public Location(string address)
@@ -63,10 +64,12 @@ namespace Tidalio
             set { latitude = value; }
         }
 
+        public int Id { get { return id; } set { id = value; } }
         public double Longitude
         {
             get { return longitude; }
             set { longitude = value; }
         }
+
     }
 }

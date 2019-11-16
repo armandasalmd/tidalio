@@ -81,7 +81,10 @@
     <Compile Include="Source\Helpers\Functions.cs" />
     <Compile Include="Source\Helpers\TidalApi.cs" />
     <Compile Include="Source\Helpers\NewtonModelsConverter.cs" />
+    <Compile Include="Source\Helpers\TidalioApi.cs" />
     <Compile Include="Source\Models\ForecastCard.cs" />
+    <Compile Include="Source\Models\ForecastCardNewton.cs" />
+    <Compile Include="Source\Models\LocationNewton.cs" />
     <Compile Include="Source\Models\TidalEvent.cs" />
     <Compile Include="Source\Models\TidalEventNewton.cs" />
     <Compile Include="Source\Models\TidalStationsNewton.cs" />

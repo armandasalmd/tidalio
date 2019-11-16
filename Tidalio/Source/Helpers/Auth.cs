@@ -52,6 +52,8 @@ namespace Tidalio
                 return FirebaseAuth.GetInstance(app);
         }
 
+        public string CurrentUserEmail { get { return auth.CurrentUser.Email; } }
+
         public FirebaseApp GetApp()
         {
             return app;

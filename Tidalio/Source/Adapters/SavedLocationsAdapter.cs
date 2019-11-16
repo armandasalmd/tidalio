@@ -15,23 +15,25 @@ namespace Tidalio
 {
     class SavedLocationsAdapter : RecyclerView.Adapter
     {
-        private readonly JavaList<Location> displayData;
-        public JavaList<Location> DisplayData
+        private readonly List<Location> displayData;
+        private Activity activity;
+        public List<Location> DisplayData
         {
             get { return displayData; }
         }
 
-        public SavedLocationsAdapter(JavaList<Location> data)
+        public SavedLocationsAdapter(Activity context, List<Location> data)
         {
             displayData = data;
+            activity = context;
         }
 
         public override int ItemCount
         {
-            get { return displayData.Size(); }
+            get { return displayData.Count(); }
         }
 
-        public void AddRow(string data)
+        public void AddRow(Location data)
         {
             displayData.Add(data);
             NotifyItemInserted(ItemCount - 1);
@@ -49,8 +51,16 @@ namespace Tidalio
             View v = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.savedLocationRow, parent, false);
             MyViewholder holder = new MyViewholder(v);
             holder.deleteButton.Click += (object sender, EventArgs e) => {
+                TidalioApi.GetInstance().DeleteLocationAsync(AuthHelper.GetInstance(activity).CurrentUserEmail, displayData[holder.LayoutPosition]);
                 displayData.RemoveAt(holder.LayoutPosition);
                 NotifyItemRemoved(holder.LayoutPosition);
+            };
+            holder.root.Click += (object sender, EventArgs e) => {
+                if (activity is Dashboard)
+                {
+                    Dashboard d = (Dashboard)activity;
+                    d.SearchLocation(displayData[holder.LayoutPosition]);
+                }
             };
 
             return holder;
@@ -60,8 +70,10 @@ namespace Tidalio
         {
             public TextView rowText;
             public ImageView deleteButton;
+            public View root;
             public MyViewholder(View itemView) : base(itemView)
             {
+                root = itemView.FindViewById<View>(Resource.Id.row_root);
                 rowText = itemView.FindViewById<TextView>(Resource.Id.rowText);
                 deleteButton = itemView.FindViewById<ImageView>(Resource.Id.delete_row_btn);
                 

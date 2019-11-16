@@ -57,16 +57,19 @@ namespace Tidalio
             //Init Firebase
 
             //View
-            //txtWelcome = FindViewById<TextView>(Resource.Id.dashboard_welcome);
             activity_dashboard = FindViewById<LinearLayout>(Resource.Id.activity_dashboard);
 
-            //Check session
-            //if (auth.CurrentUser != null)
-            //    txtWelcome.Text = "Welcome , " + auth.CurrentUser.Email;
             active_fragment = new Forecast();
             ShowFragment(active_fragment);
         }
 
+        public void SearchLocation(Location loc)
+        {
+            active_fragment_id = Resource.Id.nav_forecast;
+            fab.Visibility = ViewStates.Visible;
+            active_fragment = new Forecast(loc);
+            ShowFragment(active_fragment);
+        }
         public override void OnBackPressed()
         {
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
@@ -165,7 +168,7 @@ namespace Tidalio
         }
 
 
-        private void LogoutUser()
+        public void LogoutUser()
         {
             auth.SignOut();
             if (auth.CurrentUser == null)

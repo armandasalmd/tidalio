@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Tidalio
     public class ForecastCard
     {
         private DateTime date;
+        private string strDate;
         private bool saved;
         private string icon, location, 
             temperature, summary, 
@@ -25,7 +27,12 @@ namespace Tidalio
 
         public string DateFormated
         {
-            get { return date.ToString("dd/MM/yyyy HH:mm"); }
+            get {
+                if (date != null)
+                    return date.ToString("dd/MM/yyyy HH:mm");
+                else
+                    return strDate;
+            }
         }
         public DateTime Date { get { return date; } }
         public bool IsSaved { get { return saved; } set { saved = value; } }
@@ -58,6 +65,20 @@ namespace Tidalio
             windSpeed = "0m/s";
             windDirection = "0°";
             waterLevel = "0m";
+        }
+
+        public ForecastCard(Newton.ForecastCardNewton d)
+        {
+            strDate = d.forecast_date;
+            saved = true;
+            icon = d.icon;
+            location = d.forecast_location;
+            temperature = d.temperature;
+            summary = d.summary;
+            humidity = d.humidity;
+            windSpeed = d.wind_speed;
+            windDirection = d.wind_direction;
+            waterLevel = d.water_level;
         }
 
         public ForecastCard(DateTime _date, bool _saved, string[] other8arguments)

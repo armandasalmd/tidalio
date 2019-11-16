@@ -17,20 +17,20 @@ namespace Tidalio
     {
 
 
-        private readonly JavaList<ForecastCard> displayData;
-        public JavaList<ForecastCard> DisplayData
+        private readonly List<ForecastCard> displayData;
+        public List<ForecastCard> DisplayData
         {
             get { return displayData; }
         }
 
-        public SavedForecastsAdapter(JavaList<ForecastCard> data)
+        public SavedForecastsAdapter(List<ForecastCard> data)
         {
             displayData = data;
         }
 
         public override int ItemCount
         {
-            get { return displayData.Size(); }
+            get { return displayData.Count(); }
         }
 
         public void AddRow(ForecastCard data)

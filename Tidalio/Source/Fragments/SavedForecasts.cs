@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Support.V7.Widget;
-using Android.Util;
 using Android.Views;
-using Android.Widget;
 
 namespace Tidalio
 {
@@ -19,12 +12,11 @@ namespace Tidalio
 
         private RecyclerView recyclerView;
         private SavedForecastsAdapter adapter;
-        private JavaList<ForecastCard> mList;
+        private List<ForecastCard> mList;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            mList = new JavaList<ForecastCard>();
-            GeneratedBulkCards(3);
+            mList = GetDataList();
             // Create your fragment here
         }
 
@@ -38,6 +30,12 @@ namespace Tidalio
             recyclerView.SetAdapter(adapter);
         }
 
+        public List<ForecastCard> GetDataList()
+        {
+            string user_email = AuthHelper.GetInstance(Activity).CurrentUserEmail;
+            List<ForecastCard> mResponse = TidalioApi.GetInstance().FetchForecasts(user_email);
+            return mResponse;
+        }
 
         private void GeneratedBulkCards(int count)
         {

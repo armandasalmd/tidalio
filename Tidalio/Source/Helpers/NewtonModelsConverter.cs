@@ -14,7 +14,31 @@ namespace Tidalio
 {
     public static class NewtonModelsConverter
     {
-
+        
+        public static Newton.ForecastCardNewton ForecastCard_To_ForecastCardNewton(string user_email, ForecastCard f)
+        {
+            Newton.ForecastCardNewton result = new Newton.ForecastCardNewton();
+            result.user_email = user_email;
+            result.forecast_date = f.DateFormated;
+            result.icon = f.Icon;
+            result.forecast_location = f.Location;
+            result.temperature = f.Temperature;
+            result.summary = f.Summary;
+            result.humidity = f.Humidity;
+            result.wind_direction = f.WindSpeed;
+            result.wind_direction = f.WindDirection;
+            result.water_level = f.WaterLevel;
+            return result;
+        }
+        public static Newton.LocationNewton Location_To_LocationNewton(string user_email, Location loc)
+        {
+            Newton.LocationNewton result = new Newton.LocationNewton();
+            result.user_email = user_email;
+            result.title = loc.Address;
+            result.latitude = loc.Latitude;
+            result.longitude = loc.Longitude;
+            return result;
+        }
         public static List<TidalStation> TidalStationsNewton_ToList_TidalStation(Newton.TidalStationsNewton data)
         {
             List<TidalStation> result = new List<TidalStation>();
@@ -44,6 +68,30 @@ namespace Tidalio
             return result;
         }
 
+        public static List<Location> ListLocationNewton_ToList_Location(List<Newton.LocationNewton> dataList)
+        {
+            List<Location> result = new List<Location>();
+            if (dataList != null)
+            {
+                foreach (Newton.LocationNewton e in dataList)
+                {
+                    result.Add(new Location(e.title, e.latitude, e.longitude));
+                }
+            }
+            return result;
+        }
 
+        public static List<ForecastCard> ListForecasCardtNewton_ToList_ForecastCard(List<Newton.ForecastCardNewton> dataList)
+        {
+            List<ForecastCard> result = new List<ForecastCard>();
+            if (dataList != null)
+            {
+                foreach (Newton.ForecastCardNewton e in dataList)
+                {
+                    result.Add(new ForecastCard(e));
+                }
+            }
+            return result;
+        }
     }
 }
