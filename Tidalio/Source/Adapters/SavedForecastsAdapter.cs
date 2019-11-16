@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
@@ -18,14 +12,16 @@ namespace Tidalio
 
 
         private readonly List<ForecastCard> displayData;
+        private Context context;
         public List<ForecastCard> DisplayData
         {
             get { return displayData; }
         }
 
-        public SavedForecastsAdapter(List<ForecastCard> data)
+        public SavedForecastsAdapter(Context ctx, List<ForecastCard> data)
         {
             displayData = data;
+            context = ctx;
         }
 
         public override int ItemCount
@@ -53,6 +49,8 @@ namespace Tidalio
             {
                 if (!e.IsChecked)
                 {
+                    string user_email = AuthHelper.GetInstance(context).CurrentUserEmail;
+                    TidalioApi.GetInstance().DeleteCardAsync(user_email, displayData[holder.LayoutPosition]);
                     // On Checkbox uncheck
                     displayData.RemoveAt(holder.LayoutPosition);
                     NotifyItemRemoved(holder.LayoutPosition);
@@ -65,7 +63,7 @@ namespace Tidalio
         {
             vh.dateLabel.Text = cardModel.DateFormated;
             vh.locationLabel.Text = cardModel.Location;
-            vh.summaryLabel.Text = cardModel.Summary;
+            vh.summaryLabel.Text = cardModel.Summary + "|" + cardModel.Temperature;
             vh.humidityLabel.Text = cardModel.Humidity;
             vh.windSpeedLabel.Text = cardModel.WindSpeed;
             vh.windDirectionLabel.Text = cardModel.WindDirection;

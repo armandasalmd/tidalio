@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using DarkSkyApi;
 using Xamarin.Essentials;
 
@@ -28,10 +18,10 @@ namespace Tidalio
         public string DateFormated
         {
             get {
-                if (date != null)
-                    return date.ToString("dd/MM/yyyy HH:mm");
-                else
+                if (strDate != null)
                     return strDate;
+                else
+                    return date.ToString("dd/MM/yyyy HH:mm");
             }
         }
         public DateTime Date { get { return date; } }

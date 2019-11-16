@@ -40,7 +40,7 @@ namespace Tidalio
             btnLogin.SetOnClickListener(this);
             btnForgotPassword.SetOnClickListener(this);
 
-            btnLogin.CallOnClick(); // TODO: delete when in production
+            //btnLogin.CallOnClick(); // TODO: delete when in production
         }
 
         public void OnClick(View v)
@@ -62,8 +62,8 @@ namespace Tidalio
         }
         private void LoginUser(string email, string password)
         {
-            email = "test@test.com"; // TODO: remove in production
-            password = "test123"; // TODO: remove in production
+            //email = "test@test.com"; // TODO: remove in production
+            //password = "test123"; // TODO: remove in production
             if (email == null || email == "")
                 DoSnackbar("Please enter the email");
             else if (password == null || password == "")

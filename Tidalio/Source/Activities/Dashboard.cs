@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.Gms.Tasks;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
@@ -11,14 +10,12 @@ using Android.Views;
 using Android.Widget;
 using Firebase.Auth;
 using System;
-using static Android.Views.View;
 
 namespace Tidalio
 {
     [Activity(Label = "Dashboard", Theme = "@style/AppTheme.NoActionBar")]
     public class Dashboard : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
-        TextView txtWelcome;
         LinearLayout activity_dashboard;
         FloatingActionButton fab;
         Fragment active_fragment;

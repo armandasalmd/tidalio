@@ -1,13 +1,10 @@
 ﻿using Android.App;
-using Android.Gms.Tasks;
 using Android.OS;
-using Android.Runtime;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using System;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Contexts;
 
 namespace Tidalio
 {

@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using System.Collections.Generic;
 
 namespace Tidalio
 {
@@ -25,7 +15,7 @@ namespace Tidalio
             result.temperature = f.Temperature;
             result.summary = f.Summary;
             result.humidity = f.Humidity;
-            result.wind_direction = f.WindSpeed;
+            result.wind_speed = f.WindSpeed;
             result.wind_direction = f.WindDirection;
             result.water_level = f.WaterLevel;
             return result;

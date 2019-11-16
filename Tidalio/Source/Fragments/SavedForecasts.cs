@@ -24,7 +24,7 @@ namespace Tidalio
         {
             recyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerView2);
 
-            adapter = new SavedForecastsAdapter(mList);
+            adapter = new SavedForecastsAdapter(Activity, mList);
             recyclerView.HasFixedSize = true;
             recyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
             recyclerView.SetAdapter(adapter);
@@ -35,13 +35,6 @@ namespace Tidalio
             string user_email = AuthHelper.GetInstance(Activity).CurrentUserEmail;
             List<ForecastCard> mResponse = TidalioApi.GetInstance().FetchForecasts(user_email);
             return mResponse;
-        }
-
-        private void GeneratedBulkCards(int count)
-        {
-            //ForecastCard card = Constants.GetSampleForecastCard();
-            for (int i = 0; i < count; i++)
-                mList.Add(Constants.GetSampleForecastCard());
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

@@ -81,7 +81,7 @@ namespace Tidalio
             if (autoComplete.Text.Length >= 4)
             {
                 string stationId = autoComplete.Text.Split(" ").Last();
-                if (stationId.Length == 4 && stationId.Length == 5)
+                if (stationId.Length == 4 || stationId.Length == 5)
                 {
                     foreach (TidalStation s in stations)
                     {
@@ -157,7 +157,7 @@ namespace Tidalio
             windDirectionLabel.Text = cardModel.WindDirection;
             tidalLabel.Text = cardModel.WaterLevel;
             forecastIcon.SetBackgroundResource(Functions.GetIconDrawable(cardModel.Icon));
-            
+            checkboxSaved.Checked = false;
         }
 
         public void InitLabels(View view)
