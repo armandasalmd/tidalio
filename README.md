@@ -7,17 +7,17 @@ A mobile Xamarin android app
 ### Screenshots
 
 Login screen
-[Login](/login-screen.png)
+![Login](/login-screen.png)
 
 Main screen - weather forecast from API
-[Forecast](/main-forecast.png)
+![Forecast](/main-forecast.png)
 
 Side menu
-[Menu](/sidebar.png)
+![Menu](/sidebar.png)
 
 Autocomplete
-[Autocomplete](/autocomplete.png)
+![Autocomplete](/autocomplete.png)
 
 ListView
-[ListView](/list-view.png)
+![ListView](/list-view.png)
 
